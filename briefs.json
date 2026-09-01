@@ -1,0 +1,1977 @@
+{
+  "provenance": {
+    "built_at_utc": "2026-09-01T02:37:28.797217+00:00",
+    "brief_count": 210,
+    "grid_seed": 20260831,
+    "authored_by": "Claude (Opus 5), reviewed by Nicole Minoza",
+    "confounds": [
+      "Specificity is entangled with prompt length by construction. Any effect attributed to specificity is also an effect of token count.",
+      "The briefs were written by Claude, which is one of the models under test. If this phrasing sits closer to one provider's training distribution than another's, that advantages a condition in a way balancing does not correct.",
+      "Marginals are exact. Pairwise balance is approximate and was improved by hill climbing, not guaranteed."
+    ]
+  },
+  "dimensions": {
+    "domain": [
+      "fintech",
+      "healthcare",
+      "editorial",
+      "gaming",
+      "luxury_retail",
+      "public_sector",
+      "nonprofit",
+      "developer_tools",
+      "food",
+      "education"
+    ],
+    "tone": [
+      "authoritative",
+      "playful",
+      "warm",
+      "technical",
+      "elegant",
+      "brutal"
+    ],
+    "medium": [
+      "website",
+      "mobile_ui",
+      "print_editorial",
+      "packaging",
+      "presentation",
+      "long_form_reading"
+    ],
+    "script": [
+      "latin_only",
+      "plus_cyrillic",
+      "plus_greek",
+      "plus_vietnamese",
+      "cjk_adjacent"
+    ],
+    "specificity": [
+      "vague",
+      "moderate",
+      "highly_specific"
+    ]
+  },
+  "script_eligibility": {
+    "latin_only": 1944,
+    "plus_cyrillic": 294,
+    "plus_greek": 118,
+    "plus_vietnamese": 519,
+    "cjk_adjacent": 135,
+    "_catalog_family_count": 1955,
+    "_catalog_fetched_on": "2026-09-01",
+    "_note": "Step 5 must use these as the denominator for script-sliced coverage. Measuring a Greek-constrained slice against the full catalog would report catalog scarcity as model concentration."
+  },
+  "specificity_lengths": {
+    "vague": {
+      "count": 70,
+      "mean_words": 14.3,
+      "min_words": 9,
+      "max_words": 22
+    },
+    "moderate": {
+      "count": 70,
+      "mean_words": 30.4,
+      "min_words": 24,
+      "max_words": 44
+    },
+    "highly_specific": {
+      "count": 70,
+      "mean_words": 55.6,
+      "min_words": 42,
+      "max_words": 67
+    }
+  },
+  "briefs": [
+    {
+      "id": "b001",
+      "domain": "food",
+      "tone": "brutal",
+      "medium": "packaging",
+      "script": "plus_vietnamese",
+      "specificity": "vague",
+      "text": "Packaging for a Vietnamese chilli sauce with an aggressive brand personality."
+    },
+    {
+      "id": "b002",
+      "domain": "luxury_retail",
+      "tone": "brutal",
+      "medium": "website",
+      "script": "latin_only",
+      "specificity": "moderate",
+      "text": "The site for a fashion label whose whole identity is anti-luxury luxury. It should feel harsh and confrontational on a large screen, and still function as an e-commerce interface."
+    },
+    {
+      "id": "b003",
+      "domain": "developer_tools",
+      "tone": "technical",
+      "medium": "mobile_ui",
+      "script": "plus_vietnamese",
+      "specificity": "moderate",
+      "text": "A mobile client for a Vietnamese developer community. It shows code snippets inline so it needs a monospace companion, and the Vietnamese interface labels have to stay clear at small sizes."
+    },
+    {
+      "id": "b004",
+      "domain": "developer_tools",
+      "tone": "playful",
+      "medium": "presentation",
+      "script": "latin_only",
+      "specificity": "vague",
+      "text": "A conference talk deck about a new open source library that should feel light and human."
+    },
+    {
+      "id": "b005",
+      "domain": "editorial",
+      "tone": "elegant",
+      "medium": "website",
+      "script": "plus_greek",
+      "specificity": "moderate",
+      "text": "The website for a Greek literary quarterly. It should feel refined and a little literary, and the Greek needs to read as naturally as the English, since most of the archive is Greek."
+    },
+    {
+      "id": "b006",
+      "domain": "public_sector",
+      "tone": "technical",
+      "medium": "website",
+      "script": "latin_only",
+      "specificity": "highly_specific",
+      "text": "A national tax filing portal. Forms carry dense field labels at 14px and monetary values that must align, so tabular figures are required. WCAG AA minimum, ideally AAA for body text. We need unambiguous 1, l and I for reference codes, at least four weights, and a licence permitting self-hosting on government infrastructure. Neutral and unmistakably clear."
+    },
+    {
+      "id": "b007",
+      "domain": "developer_tools",
+      "tone": "elegant",
+      "medium": "packaging",
+      "script": "plus_greek",
+      "specificity": "vague",
+      "text": "Packaging for a limited-run hardware development kit sold in Greece, labelled in Greek and English, and it should feel considered and premium."
+    },
+    {
+      "id": "b008",
+      "domain": "editorial",
+      "tone": "elegant",
+      "medium": "presentation",
+      "script": "plus_vietnamese",
+      "specificity": "vague",
+      "text": "A deck introducing a new Vietnamese literary imprint to booksellers, and it should feel cultured."
+    },
+    {
+      "id": "b009",
+      "domain": "education",
+      "tone": "brutal",
+      "medium": "presentation",
+      "script": "plus_cyrillic",
+      "specificity": "moderate",
+      "text": "A deck for a Russian teachers' union presenting classroom overcrowding data. It should feel confrontational, and the Cyrillic must carry that at headline sizes."
+    },
+    {
+      "id": "b010",
+      "domain": "healthcare",
+      "tone": "technical",
+      "medium": "mobile_ui",
+      "script": "latin_only",
+      "specificity": "highly_specific",
+      "text": "A clinician-facing app for reviewing lab results mid-shift. Values are read at a glance under time pressure, so we need tabular figures, unambiguous separation of 1, l and I as well as 0 and O, and legibility at 12px on a phone held at arm's length. Four weights minimum, and a licence that permits embedding in a native app."
+    },
+    {
+      "id": "b011",
+      "domain": "fintech",
+      "tone": "elegant",
+      "medium": "print_editorial",
+      "script": "plus_vietnamese",
+      "specificity": "vague",
+      "text": "A quarterly print report for the wealth division of a Vietnamese private bank needs a text face with some refinement to it."
+    },
+    {
+      "id": "b012",
+      "domain": "gaming",
+      "tone": "playful",
+      "medium": "presentation",
+      "script": "latin_only",
+      "specificity": "highly_specific",
+      "text": "A pitch deck for a party game studio seeking funding. Slides run 40px headlines and 20px body, projected in bright rooms, so contrast matters. We need at least five weights, a display cut with real personality for the section breaks, and figures that stay readable in revenue projections. It should feel fun without looking amateur."
+    },
+    {
+      "id": "b013",
+      "domain": "luxury_retail",
+      "tone": "technical",
+      "medium": "packaging",
+      "script": "plus_greek",
+      "specificity": "highly_specific",
+      "text": "Packaging for a Greek olive oil sold at a premium price. The label carries origin data, acidity figures and harvest dates in Greek and English inside a 40mm strip, so we need a condensed cut and tabular figures. It is screen printed onto glass, which loses detail below 6pt, so nothing delicate. It should read as precise and provenance-obsessed."
+    },
+    {
+      "id": "b014",
+      "domain": "food",
+      "tone": "authoritative",
+      "medium": "long_form_reading",
+      "script": "latin_only",
+      "specificity": "vague",
+      "text": "A printed reference book on classical cooking technique that should feel definitive."
+    },
+    {
+      "id": "b015",
+      "domain": "editorial",
+      "tone": "technical",
+      "medium": "mobile_ui",
+      "script": "plus_vietnamese",
+      "specificity": "vague",
+      "text": "A news reader app for a Vietnamese daily that should feel precise and current."
+    },
+    {
+      "id": "b016",
+      "domain": "food",
+      "tone": "technical",
+      "medium": "presentation",
+      "script": "latin_only",
+      "specificity": "moderate",
+      "text": "A deck presenting supply chain data to a food manufacturer's board. It is dense with figures that need to align, and it should read as analytical rather than promotional."
+    },
+    {
+      "id": "b017",
+      "domain": "gaming",
+      "tone": "brutal",
+      "medium": "long_form_reading",
+      "script": "cjk_adjacent",
+      "specificity": "vague",
+      "text": "A lore compendium for a violent Japanese action game, published in Japanese and English, and it should feel oppressive."
+    },
+    {
+      "id": "b018",
+      "domain": "fintech",
+      "tone": "authoritative",
+      "medium": "mobile_ui",
+      "script": "plus_greek",
+      "specificity": "moderate",
+      "text": "Mobile banking app for a Greek retail bank, interface in Greek and English. The Greek should feel as considered as the Latin rather than an afterthought, and numerals need to line up cleanly down a transaction list."
+    },
+    {
+      "id": "b019",
+      "domain": "healthcare",
+      "tone": "elegant",
+      "medium": "presentation",
+      "script": "plus_greek",
+      "specificity": "vague",
+      "text": "A conference deck for a Greek medical society, presented in Greek, and it should feel dignified."
+    },
+    {
+      "id": "b020",
+      "domain": "gaming",
+      "tone": "elegant",
+      "medium": "print_editorial",
+      "script": "cjk_adjacent",
+      "specificity": "highly_specific",
+      "text": "A collector's art book for a Japanese role-playing game, 240 pages with Japanese and English side by side. The Latin has to pair with Noto Serif JP at matched weight and x-height, hold at 10pt across long captions, and offer old-style figures and true small caps. It prints on coated stock with fine hairlines, so nothing that breaks up at small sizes. Restrained and refined, not gothic."
+    },
+    {
+      "id": "b021",
+      "domain": "public_sector",
+      "tone": "authoritative",
+      "medium": "long_form_reading",
+      "script": "plus_greek",
+      "specificity": "highly_specific",
+      "text": "A Greek parliamentary committee report, roughly 400 pages at 10pt in Greek and English. Footnoting is heavy and clauses are numbered, so we need superior figures, tabular figures for the budget annexes, and Greek with correct tonos in both roman and italic. It must read as official and be free to redistribute."
+    },
+    {
+      "id": "b022",
+      "domain": "education",
+      "tone": "playful",
+      "medium": "print_editorial",
+      "script": "plus_greek",
+      "specificity": "vague",
+      "text": "A printed Greek alphabet workbook for young children that should feel friendly."
+    },
+    {
+      "id": "b023",
+      "domain": "luxury_retail",
+      "tone": "technical",
+      "medium": "long_form_reading",
+      "script": "plus_greek",
+      "specificity": "highly_specific",
+      "text": "A printed provenance dossier accompanying a Greek antiquities dealer's catalogue, in Greek and English at 10pt. Polytonic Greek is needed for the inscriptions. Footnoting is heavy with superscript references, so the face needs real superior figures rather than scaled ones, plus small caps and tabular figures for the measurement tables. Dry and exacting."
+    },
+    {
+      "id": "b024",
+      "domain": "luxury_retail",
+      "tone": "elegant",
+      "medium": "presentation",
+      "script": "plus_cyrillic",
+      "specificity": "highly_specific",
+      "text": "A deck presenting a jewellery house to Russian retail partners. Cyrillic headlines at 50px, body at 18px, projected and also sent as a PDF. We need Cyrillic drawn to the same standard as the Latin, at least a light and a regular with true italics, old-style figures for prose and lining figures for the price tables. It has to feel expensive and quiet."
+    },
+    {
+      "id": "b025",
+      "domain": "education",
+      "tone": "brutal",
+      "medium": "print_editorial",
+      "script": "plus_vietnamese",
+      "specificity": "highly_specific",
+      "text": "A printed Vietnamese secondary school textbook on twentieth century history. Body at 10pt in two columns, heavy use of primary source extracts requiring a distinct italic, Vietnamese diacritics that stay clear at that size on cheap paper, and tabular figures for the chronology tables. The subject is grim and the setting should not soften it. The licence must permit state redistribution."
+    },
+    {
+      "id": "b026",
+      "domain": "luxury_retail",
+      "tone": "technical",
+      "medium": "packaging",
+      "script": "cjk_adjacent",
+      "specificity": "highly_specific",
+      "text": "Packaging for a Japanese single-origin whisky sold internationally. The back label sets Japanese and English at 6pt in a fixed area, including cask numbers and ABV, so we need a condensed cut with tabular figures and a Latin that pairs with the Japanese without a weight mismatch. It prints on textured paper. Precise and understated."
+    },
+    {
+      "id": "b027",
+      "domain": "nonprofit",
+      "tone": "elegant",
+      "medium": "presentation",
+      "script": "plus_greek",
+      "specificity": "highly_specific",
+      "text": "A deck presenting a Greek cultural heritage foundation to international donors, in Greek and English. Headlines at 46px, body at 18px, projected and also distributed as a PDF. The Greek must be drawn with the same care as the Latin including correct tonos, we need light through bold with true italics, and old-style figures for the prose plus tabular figures for the funding tables. Restrained and dignified."
+    },
+    {
+      "id": "b028",
+      "domain": "luxury_retail",
+      "tone": "playful",
+      "medium": "presentation",
+      "script": "plus_cyrillic",
+      "specificity": "vague",
+      "text": "A deck presenting a playful Russian accessories brand to buyers, and it should feel light and confident."
+    },
+    {
+      "id": "b029",
+      "domain": "healthcare",
+      "tone": "warm",
+      "medium": "packaging",
+      "script": "plus_vietnamese",
+      "specificity": "vague",
+      "text": "Packaging for an over-the-counter children's cold remedy sold in Vietnam, labelled in Vietnamese and English, that should feel gentle and reassuring."
+    },
+    {
+      "id": "b030",
+      "domain": "developer_tools",
+      "tone": "brutal",
+      "medium": "website",
+      "script": "cjk_adjacent",
+      "specificity": "highly_specific",
+      "text": "The site for a Japanese systems programming language with a deliberately hostile learning curve, in Japanese and English. Headlines at 56px should feel severe, and code samples at 14px need a monospace with unambiguous 0, O, 1, l and I. The Latin must pair with a Japanese Gothic face at matched weight. We need an extreme heavy weight and a licence permitting self-hosting."
+    },
+    {
+      "id": "b031",
+      "domain": "education",
+      "tone": "authoritative",
+      "medium": "packaging",
+      "script": "plus_greek",
+      "specificity": "moderate",
+      "text": "Packaging for a set of Greek university course readers. The spines carry long Greek titles that must stay legible, and it should feel academic and permanent."
+    },
+    {
+      "id": "b032",
+      "domain": "developer_tools",
+      "tone": "warm",
+      "medium": "print_editorial",
+      "script": "plus_cyrillic",
+      "specificity": "moderate",
+      "text": "A printed handbook introducing programming to Russian-speaking beginners. It runs long and is read slowly, so it has to stay comfortable, and the tone should feel encouraging rather than intimidating."
+    },
+    {
+      "id": "b033",
+      "domain": "education",
+      "tone": "brutal",
+      "medium": "mobile_ui",
+      "script": "plus_vietnamese",
+      "specificity": "moderate",
+      "text": "A mobile app for Vietnamese students preparing for high-stakes entrance exams. The tone is deliberately pressuring, and the Vietnamese has to stay legible in dense question text."
+    },
+    {
+      "id": "b034",
+      "domain": "editorial",
+      "tone": "authoritative",
+      "medium": "packaging",
+      "script": "plus_cyrillic",
+      "specificity": "moderate",
+      "text": "Slipcase and jacket for a boxed set of Russian classics. It has to feel authoritative and permanent, and the Cyrillic titling carries the whole design."
+    },
+    {
+      "id": "b035",
+      "domain": "fintech",
+      "tone": "brutal",
+      "medium": "packaging",
+      "script": "latin_only",
+      "specificity": "vague",
+      "text": "We are putting a prepaid card into physical packaging and want the type to feel hard-edged and confrontational."
+    },
+    {
+      "id": "b036",
+      "domain": "food",
+      "tone": "elegant",
+      "medium": "mobile_ui",
+      "script": "cjk_adjacent",
+      "specificity": "moderate",
+      "text": "A reservation app for a Japanese kaiseki restaurant, in Japanese and English. It should feel spare and refined, and the Latin must not look coarse beside the Japanese."
+    },
+    {
+      "id": "b037",
+      "domain": "gaming",
+      "tone": "technical",
+      "medium": "mobile_ui",
+      "script": "plus_vietnamese",
+      "specificity": "vague",
+      "text": "A mobile companion app for a Vietnamese esports league that should feel sharp and technical."
+    },
+    {
+      "id": "b038",
+      "domain": "editorial",
+      "tone": "playful",
+      "medium": "long_form_reading",
+      "script": "latin_only",
+      "specificity": "highly_specific",
+      "text": "A humour anthology, 320 pages set at 10.5pt on cream stock. The face needs a lively italic, which is used heavily for asides, ligatures that do not look prim, and enough character to carry a joke without becoming tiring across a full book. Old-style figures, and a display cut for the chapter openers from the same family."
+    },
+    {
+      "id": "b039",
+      "domain": "food",
+      "tone": "warm",
+      "medium": "presentation",
+      "script": "plus_vietnamese",
+      "specificity": "vague",
+      "text": "A deck introducing a Vietnamese family-run noodle brand to supermarket buyers, and it should feel warm and personal."
+    },
+    {
+      "id": "b040",
+      "domain": "food",
+      "tone": "elegant",
+      "medium": "mobile_ui",
+      "script": "cjk_adjacent",
+      "specificity": "moderate",
+      "text": "A mobile menu for a Tokyo cocktail bar, in Japanese and English. Drinks carry long tasting notes read in very low light, so the type has to stay legible when dimmed, and the whole thing should feel quietly luxurious."
+    },
+    {
+      "id": "b041",
+      "domain": "public_sector",
+      "tone": "authoritative",
+      "medium": "long_form_reading",
+      "script": "cjk_adjacent",
+      "specificity": "vague",
+      "text": "A Japanese municipal planning document that should read as official."
+    },
+    {
+      "id": "b042",
+      "domain": "developer_tools",
+      "tone": "brutal",
+      "medium": "presentation",
+      "script": "plus_greek",
+      "specificity": "moderate",
+      "text": "A deck for a Greek security research team presenting vulnerability findings. It should feel blunt, and the Greek headlines need to carry that at projected sizes."
+    },
+    {
+      "id": "b043",
+      "domain": "education",
+      "tone": "elegant",
+      "medium": "long_form_reading",
+      "script": "latin_only",
+      "specificity": "vague",
+      "text": "A printed anthology of essays used in an undergraduate literature course that should feel refined."
+    },
+    {
+      "id": "b044",
+      "domain": "developer_tools",
+      "tone": "technical",
+      "medium": "print_editorial",
+      "script": "plus_cyrillic",
+      "specificity": "highly_specific",
+      "text": "A printed reference manual for a Russian embedded systems toolchain, 500 pages at 9pt in Russian and English. Register tables need tabular figures with unambiguous digits, and code listings need a monospace companion metrically compatible with the text face. The Cyrillic must be properly drawn. Dry, precise, no personality."
+    },
+    {
+      "id": "b045",
+      "domain": "editorial",
+      "tone": "warm",
+      "medium": "presentation",
+      "script": "plus_cyrillic",
+      "specificity": "highly_specific",
+      "text": "A deck presenting a Russian-language children's magazine to advertisers. Slides mix Cyrillic headlines at 44px with body copy at 18px, so we need at least four weights, properly drawn Cyrillic italics, and figures that read clearly in circulation charts. It should feel warm and family-oriented rather than corporate."
+    },
+    {
+      "id": "b046",
+      "domain": "gaming",
+      "tone": "technical",
+      "medium": "presentation",
+      "script": "plus_vietnamese",
+      "specificity": "moderate",
+      "text": "A deck for a Vietnamese game studio presenting engine performance results. It is dense with benchmark tables and needs figures that align, and it should read as rigorous rather than promotional."
+    },
+    {
+      "id": "b047",
+      "domain": "public_sector",
+      "tone": "warm",
+      "medium": "packaging",
+      "script": "plus_cyrillic",
+      "specificity": "highly_specific",
+      "text": "Packaging for a public health kit distributed in Russian-speaking regions. Instructions set at 8pt in Russian and English inside a fixed area, so we need a condensed cut with Cyrillic that stays clear at that size. It should feel reassuring rather than bureaucratic, must survive printing on recycled board, and the licence has to allow government redistribution."
+    },
+    {
+      "id": "b048",
+      "domain": "education",
+      "tone": "technical",
+      "medium": "website",
+      "script": "cjk_adjacent",
+      "specificity": "vague",
+      "text": "A Japanese online learning platform for mathematics that should feel precise."
+    },
+    {
+      "id": "b049",
+      "domain": "nonprofit",
+      "tone": "authoritative",
+      "medium": "mobile_ui",
+      "script": "plus_cyrillic",
+      "specificity": "highly_specific",
+      "text": "A mobile app for a Russian legal aid charity. Users are often in distress, so text must be legible at 16px minimum with WCAG AA contrast, the Cyrillic must be drawn rather than adapted, and we need at least four weights for clear hierarchy. Case reference numbers need tabular figures with unambiguous digits. It should read as competent and steady."
+    },
+    {
+      "id": "b050",
+      "domain": "luxury_retail",
+      "tone": "warm",
+      "medium": "print_editorial",
+      "script": "latin_only",
+      "specificity": "moderate",
+      "text": "A printed lookbook for a cashmere brand. It should feel warm and tactile rather than cold and editorial, and the captions run small alongside large photography."
+    },
+    {
+      "id": "b051",
+      "domain": "fintech",
+      "tone": "playful",
+      "medium": "presentation",
+      "script": "plus_vietnamese",
+      "specificity": "vague",
+      "text": "A pitch deck for a Vietnamese consumer payments startup that should come across as energetic rather than corporate."
+    },
+    {
+      "id": "b052",
+      "domain": "food",
+      "tone": "technical",
+      "medium": "long_form_reading",
+      "script": "plus_cyrillic",
+      "specificity": "vague",
+      "text": "A Russian textbook on food science that should read as precise."
+    },
+    {
+      "id": "b053",
+      "domain": "food",
+      "tone": "brutal",
+      "medium": "presentation",
+      "script": "plus_greek",
+      "specificity": "highly_specific",
+      "text": "A deck for a Greek food waste campaign presented to industry. Headlines at 52px must feel accusatory and data at 16px must stay precise, so we need tabular figures alongside an extreme heavy weight. Greek tonos must not clip at heading sizes. It is projected in daylit rooms, so contrast matters. Unsparing in tone."
+    },
+    {
+      "id": "b054",
+      "domain": "luxury_retail",
+      "tone": "elegant",
+      "medium": "website",
+      "script": "plus_vietnamese",
+      "specificity": "moderate",
+      "text": "The e-commerce site for a Vietnamese silk house. It needs to feel refined, and the Vietnamese product descriptions must sit as elegantly on the page as the English ones."
+    },
+    {
+      "id": "b055",
+      "domain": "food",
+      "tone": "warm",
+      "medium": "print_editorial",
+      "script": "cjk_adjacent",
+      "specificity": "highly_specific",
+      "text": "A printed Japanese home cooking book, 250 pages in Japanese and English. Recipes need tabular figures for quantities and times, ingredient lists set at 9pt so legibility at that size is critical, and the Latin must pair with a Japanese Mincho face at matched weight. We want a warm domestic feeling and a true italic for the headnotes."
+    },
+    {
+      "id": "b056",
+      "domain": "luxury_retail",
+      "tone": "warm",
+      "medium": "packaging",
+      "script": "cjk_adjacent",
+      "specificity": "moderate",
+      "text": "Packaging for a Japanese tea brand entering Western markets. The box carries Japanese and English together, and it should feel warm and handmade rather than corporate."
+    },
+    {
+      "id": "b057",
+      "domain": "gaming",
+      "tone": "technical",
+      "medium": "mobile_ui",
+      "script": "plus_cyrillic",
+      "specificity": "vague",
+      "text": "A Russian-language mod manager app that should feel utilitarian."
+    },
+    {
+      "id": "b058",
+      "domain": "food",
+      "tone": "brutal",
+      "medium": "print_editorial",
+      "script": "latin_only",
+      "specificity": "vague",
+      "text": "A printed menu for a nose-to-tail restaurant that should feel unsentimental."
+    },
+    {
+      "id": "b059",
+      "domain": "nonprofit",
+      "tone": "playful",
+      "medium": "long_form_reading",
+      "script": "cjk_adjacent",
+      "specificity": "vague",
+      "text": "An illustrated annual report for a Japanese children's charity, in Japanese and English, that should feel hopeful."
+    },
+    {
+      "id": "b060",
+      "domain": "education",
+      "tone": "authoritative",
+      "medium": "packaging",
+      "script": "cjk_adjacent",
+      "specificity": "moderate",
+      "text": "Packaging for a Japanese boxed set of university entrance exam past papers. It carries dense Japanese and English text at small sizes, and it should feel serious and official."
+    },
+    {
+      "id": "b061",
+      "domain": "food",
+      "tone": "brutal",
+      "medium": "mobile_ui",
+      "script": "latin_only",
+      "specificity": "highly_specific",
+      "text": "A delivery app for a fried chicken chain built on a loud, aggressive brand. Type must work at 15px for item descriptions and 30px for category headers, needs an extreme heavy weight and a condensed cut for promotional banners, tabular figures for prices, and must stay WCAG AA compliant. It should feel like it is shouting the menu at you."
+    },
+    {
+      "id": "b062",
+      "domain": "food",
+      "tone": "elegant",
+      "medium": "mobile_ui",
+      "script": "plus_greek",
+      "specificity": "highly_specific",
+      "text": "A mobile app for a Greek fine dining group. Menus set at 16px in Greek and English with long dish descriptions, so it has to stay comfortable, Greek tonos must be correctly placed, and we need a light weight that survives on screen plus true italics for the wine list. Restrained and expensive."
+    },
+    {
+      "id": "b063",
+      "domain": "public_sector",
+      "tone": "authoritative",
+      "medium": "presentation",
+      "script": "plus_greek",
+      "specificity": "vague",
+      "text": "A deck for a Greek ministry announcing a policy programme that should feel official."
+    },
+    {
+      "id": "b064",
+      "domain": "public_sector",
+      "tone": "elegant",
+      "medium": "packaging",
+      "script": "latin_only",
+      "specificity": "vague",
+      "text": "Packaging for a national museum's membership card that should feel refined."
+    },
+    {
+      "id": "b065",
+      "domain": "healthcare",
+      "tone": "authoritative",
+      "medium": "print_editorial",
+      "script": "plus_vietnamese",
+      "specificity": "moderate",
+      "text": "A printed patient consent form used across a Vietnamese hospital network. It has to read as unambiguous and official, and the Vietnamese diacritics need to stay clear after the form has been photocopied several times."
+    },
+    {
+      "id": "b066",
+      "domain": "gaming",
+      "tone": "technical",
+      "medium": "website",
+      "script": "plus_cyrillic",
+      "specificity": "moderate",
+      "text": "The website for a Russian tactical shooter, in Russian and English. It carries a lot of weapon statistics in tables, so figures need to align, and the whole thing should feel engineered rather than styled."
+    },
+    {
+      "id": "b067",
+      "domain": "education",
+      "tone": "warm",
+      "medium": "print_editorial",
+      "script": "latin_only",
+      "specificity": "highly_specific",
+      "text": "A printed early reading book for six-year-olds. Body at 16pt with generous spacing, single-storey a and g are required because that is what children are taught to write, letterforms must stay unambiguous between b, d, p and q, and we need a bold that does not distort the skeleton. It prints on uncoated stock. Warm and unintimidating."
+    },
+    {
+      "id": "b068",
+      "domain": "food",
+      "tone": "playful",
+      "medium": "print_editorial",
+      "script": "plus_cyrillic",
+      "specificity": "vague",
+      "text": "A printed children's cookbook in Russian that should feel fun."
+    },
+    {
+      "id": "b069",
+      "domain": "gaming",
+      "tone": "playful",
+      "medium": "website",
+      "script": "latin_only",
+      "specificity": "vague",
+      "text": "The site for a colourful indie puzzle game that should feel inviting."
+    },
+    {
+      "id": "b070",
+      "domain": "editorial",
+      "tone": "playful",
+      "medium": "packaging",
+      "script": "cjk_adjacent",
+      "specificity": "moderate",
+      "text": "Packaging for a boxed set of a Japanese manga imprint's English translations. The spine sets Japanese and Latin together, and it should feel playful without undercutting the artwork."
+    },
+    {
+      "id": "b071",
+      "domain": "luxury_retail",
+      "tone": "authoritative",
+      "medium": "long_form_reading",
+      "script": "plus_vietnamese",
+      "specificity": "vague",
+      "text": "A printed brand history for a Vietnamese jeweller that should feel established."
+    },
+    {
+      "id": "b072",
+      "domain": "public_sector",
+      "tone": "elegant",
+      "medium": "packaging",
+      "script": "plus_cyrillic",
+      "specificity": "moderate",
+      "text": "Packaging for a Russian state postal service's commemorative stamp collection. It should feel dignified and a little ceremonial, and the Cyrillic titling is the main design element."
+    },
+    {
+      "id": "b073",
+      "domain": "fintech",
+      "tone": "technical",
+      "medium": "long_form_reading",
+      "script": "cjk_adjacent",
+      "specificity": "moderate",
+      "text": "A technical whitepaper on settlement infrastructure, published in English with a Japanese translation. Readers spend the better part of an hour in it, so the Latin has to hold up across long paragraphs and sit comfortably beside the Japanese."
+    },
+    {
+      "id": "b074",
+      "domain": "education",
+      "tone": "authoritative",
+      "medium": "mobile_ui",
+      "script": "latin_only",
+      "specificity": "vague",
+      "text": "A mobile app for a university's official student records that should feel institutional."
+    },
+    {
+      "id": "b075",
+      "domain": "gaming",
+      "tone": "authoritative",
+      "medium": "print_editorial",
+      "script": "plus_greek",
+      "specificity": "highly_specific",
+      "text": "A printed strategy guide for a historical wargame set in ancient Greece, in Greek and English. Polytonic Greek is required for the period quotations. Body runs at 9.5pt in three columns with heavy unit-statistic tables, so tabular lining figures and a condensed cut are both necessary. It should read as scholarly and authoritative."
+    },
+    {
+      "id": "b076",
+      "domain": "public_sector",
+      "tone": "brutal",
+      "medium": "presentation",
+      "script": "plus_vietnamese",
+      "specificity": "highly_specific",
+      "text": "A deck for a Vietnamese disaster preparedness campaign, presented in Vietnamese. Headlines at 52px have to feel urgent and unavoidable, body at 20px has to stay readable in poorly lit community halls. Vietnamese diacritics must not clip at heading sizes. We need an extreme heavy weight, and the licence must permit unrestricted government use."
+    },
+    {
+      "id": "b077",
+      "domain": "luxury_retail",
+      "tone": "elegant",
+      "medium": "mobile_ui",
+      "script": "plus_vietnamese",
+      "specificity": "vague",
+      "text": "A shopping app for a Vietnamese luxury department store that should feel upmarket."
+    },
+    {
+      "id": "b078",
+      "domain": "public_sector",
+      "tone": "brutal",
+      "medium": "packaging",
+      "script": "cjk_adjacent",
+      "specificity": "vague",
+      "text": "Packaging for a Japanese emergency supply kit that should feel urgent."
+    },
+    {
+      "id": "b079",
+      "domain": "healthcare",
+      "tone": "authoritative",
+      "medium": "mobile_ui",
+      "script": "plus_vietnamese",
+      "specificity": "highly_specific",
+      "text": "A Vietnamese national vaccination record app. Text must render Vietnamese correctly including stacked diacritics on uppercase, stay legible at 13px for dose names, and use tabular figures for dates and lot numbers. It has to read as official and trustworthy, and the licence must permit offline embedding, since rural clinics frequently have no connectivity."
+    },
+    {
+      "id": "b080",
+      "domain": "editorial",
+      "tone": "warm",
+      "medium": "long_form_reading",
+      "script": "plus_vietnamese",
+      "specificity": "highly_specific",
+      "text": "A Vietnamese memoir, 280 pages printed at 11pt. Vietnamese stacks diacritics heavily, so the face needs marks that do not crowd the ascenders above them. We want old-style figures, a true italic, and a warm rather than neutral texture on the page."
+    },
+    {
+      "id": "b081",
+      "domain": "gaming",
+      "tone": "warm",
+      "medium": "packaging",
+      "script": "plus_greek",
+      "specificity": "moderate",
+      "text": "Packaging for a family board game sold in Greece. The box carries rules text in Greek and English at small sizes, and it should feel welcoming to people who do not think of themselves as gamers."
+    },
+    {
+      "id": "b082",
+      "domain": "healthcare",
+      "tone": "warm",
+      "medium": "presentation",
+      "script": "latin_only",
+      "specificity": "vague",
+      "text": "A slide deck for a hospice care fundraising evening that should feel gentle."
+    },
+    {
+      "id": "b083",
+      "domain": "nonprofit",
+      "tone": "brutal",
+      "medium": "presentation",
+      "script": "cjk_adjacent",
+      "specificity": "highly_specific",
+      "text": "A deck for a Japanese climate advocacy group presenting emissions data to policymakers, in Japanese and English. Headlines at 50px have to land hard and data tables at 14px have to stay precise, so we need tabular figures alongside an extreme heavy weight. The Latin must match the Japanese in weight. Confrontational rather than diplomatic."
+    },
+    {
+      "id": "b084",
+      "domain": "gaming",
+      "tone": "authoritative",
+      "medium": "print_editorial",
+      "script": "plus_cyrillic",
+      "specificity": "vague",
+      "text": "A printed rulebook for a Russian historical strategy game that should feel weighty and official."
+    },
+    {
+      "id": "b085",
+      "domain": "public_sector",
+      "tone": "technical",
+      "medium": "print_editorial",
+      "script": "cjk_adjacent",
+      "specificity": "highly_specific",
+      "text": "A Japanese building code manual, 600 pages at 9pt in Japanese with English terminology. The Latin has to pair with a Japanese Gothic face at matched weight, hold up at that size in three columns, and provide tabular figures for the load tables. We need a monospace companion for code references and a licence permitting redistribution."
+    },
+    {
+      "id": "b086",
+      "domain": "fintech",
+      "tone": "elegant",
+      "medium": "long_form_reading",
+      "script": "latin_only",
+      "specificity": "highly_specific",
+      "text": "A private bank's annual investor letter, roughly forty pages of continuous text set at 10.5pt on uncoated stock. We need old-style figures for the prose and lining tabular figures for the tables, a drawn small-caps cut for section openers, and an italic with genuine cursive structure rather than a slanted roman. It has to read as elegant without tipping into ornamental."
+    },
+    {
+      "id": "b087",
+      "domain": "food",
+      "tone": "playful",
+      "medium": "website",
+      "script": "cjk_adjacent",
+      "specificity": "highly_specific",
+      "text": "The site for a Japanese convenience store's snack range, in Japanese and English. Product names sit at 20px and nutritional tables at 13px requiring tabular figures. The Latin has to pair with a rounded Japanese face without a weight clash, we need five weights including a very heavy display cut, and WCAG AA compliance throughout. Bright and a bit chaotic."
+    },
+    {
+      "id": "b088",
+      "domain": "education",
+      "tone": "technical",
+      "medium": "website",
+      "script": "plus_greek",
+      "specificity": "vague",
+      "text": "A Greek university's site for its physics department that should feel precise."
+    },
+    {
+      "id": "b089",
+      "domain": "editorial",
+      "tone": "authoritative",
+      "medium": "mobile_ui",
+      "script": "latin_only",
+      "specificity": "vague",
+      "text": "A mobile app for a serious daily newspaper that should feel credible."
+    },
+    {
+      "id": "b090",
+      "domain": "editorial",
+      "tone": "brutal",
+      "medium": "long_form_reading",
+      "script": "plus_vietnamese",
+      "specificity": "highly_specific",
+      "text": "A Vietnamese war reportage collection, 240 pages at 10.5pt. The text should feel severe and unornamented, with strong vertical stress and tight spacing. Vietnamese diacritics have to stay unambiguous even in that setting, and we need a heavy display weight for the section titles."
+    },
+    {
+      "id": "b091",
+      "domain": "fintech",
+      "tone": "warm",
+      "medium": "mobile_ui",
+      "script": "plus_greek",
+      "specificity": "highly_specific",
+      "text": "A savings app aimed at first-time investors in Greece, interface in Greek and English. Type must stay legible at 12px on a five-inch screen, carry tabular figures so balances do not shift as they update, and place the Greek tonos correctly. The tone should feel encouraging rather than institutional, and we need at least four weights to build interface hierarchy."
+    },
+    {
+      "id": "b092",
+      "domain": "education",
+      "tone": "playful",
+      "medium": "print_editorial",
+      "script": "plus_vietnamese",
+      "specificity": "moderate",
+      "text": "A printed Vietnamese activity book for primary schoolchildren. Text appears at large sizes alongside illustrations, and it should feel energetic while the diacritics stay clear for early readers."
+    },
+    {
+      "id": "b093",
+      "domain": "education",
+      "tone": "warm",
+      "medium": "mobile_ui",
+      "script": "plus_greek",
+      "specificity": "highly_specific",
+      "text": "A mobile app helping Greek adults return to education. Users may not have studied in decades, so body sits at 17px minimum with WCAG AA contrast, Greek tonos must be correctly placed, and we need four weights for clear hierarchy. Course codes need unambiguous digits. Encouraging rather than institutional."
+    },
+    {
+      "id": "b094",
+      "domain": "nonprofit",
+      "tone": "elegant",
+      "medium": "packaging",
+      "script": "plus_vietnamese",
+      "specificity": "moderate",
+      "text": "Packaging for a Vietnamese fair-trade coffee sold to fund a literacy programme. It is bilingual, and it should feel considered and quietly premium rather than charitable."
+    },
+    {
+      "id": "b095",
+      "domain": "gaming",
+      "tone": "brutal",
+      "medium": "long_form_reading",
+      "script": "plus_greek",
+      "specificity": "moderate",
+      "text": "A companion novel for a grim mythological action game, published in Greek and English. It is read in long sittings so it has to stay readable, but the page should still feel harsh."
+    },
+    {
+      "id": "b096",
+      "domain": "public_sector",
+      "tone": "brutal",
+      "medium": "mobile_ui",
+      "script": "plus_cyrillic",
+      "specificity": "vague",
+      "text": "An emergency alert app for a Russian-speaking region that should feel urgent."
+    },
+    {
+      "id": "b097",
+      "domain": "fintech",
+      "tone": "authoritative",
+      "medium": "packaging",
+      "script": "latin_only",
+      "specificity": "vague",
+      "text": "Card carrier and welcome pack for a business banking product, and it should read as solid and long established."
+    },
+    {
+      "id": "b098",
+      "domain": "public_sector",
+      "tone": "warm",
+      "medium": "long_form_reading",
+      "script": "plus_cyrillic",
+      "specificity": "moderate",
+      "text": "A Russian-language guide to social benefits, read by people who find the system intimidating. It runs long so it has to stay comfortable, and the tone should feel human rather than official."
+    },
+    {
+      "id": "b099",
+      "domain": "luxury_retail",
+      "tone": "authoritative",
+      "medium": "presentation",
+      "script": "cjk_adjacent",
+      "specificity": "highly_specific",
+      "text": "A deck presenting a European luxury group's results to Japanese partners, in Japanese and English. Headlines at 44px and dense financial tables at 14px, so tabular lining figures are essential and the Latin has to match the Japanese in weight. We need five weights and a licence permitting embedding in distributed PDFs. Formal and unmistakably corporate."
+    },
+    {
+      "id": "b100",
+      "domain": "education",
+      "tone": "warm",
+      "medium": "presentation",
+      "script": "cjk_adjacent",
+      "specificity": "vague",
+      "text": "A deck for a Japanese kindergarten introducing itself to parents that should feel warm."
+    },
+    {
+      "id": "b101",
+      "domain": "fintech",
+      "tone": "playful",
+      "medium": "mobile_ui",
+      "script": "plus_cyrillic",
+      "specificity": "highly_specific",
+      "text": "A budgeting app for the Russian market, interface in Russian and English. It needs a properly drawn Cyrillic rather than a Latin face with transliterated glyphs, has to stay legible at 11px for category labels, and should offer a variable weight axis so we can animate emphasis without shipping extra files. The tone is light and encouraging, aimed at users in their twenties."
+    },
+    {
+      "id": "b102",
+      "domain": "healthcare",
+      "tone": "technical",
+      "medium": "long_form_reading",
+      "script": "plus_cyrillic",
+      "specificity": "highly_specific",
+      "text": "A Russian-language clinical practice guideline, around 180 pages, read on screen as a PDF and in print. Body runs at 10pt with heavy footnoting, so we need a face with a genuine small-text optical size, Cyrillic italics that follow cursive convention rather than sloping the roman, and tabular figures for the dosage tables."
+    },
+    {
+      "id": "b103",
+      "domain": "luxury_retail",
+      "tone": "warm",
+      "medium": "mobile_ui",
+      "script": "plus_cyrillic",
+      "specificity": "vague",
+      "text": "A loyalty app for a Russian department store that should feel welcoming."
+    },
+    {
+      "id": "b104",
+      "domain": "food",
+      "tone": "authoritative",
+      "medium": "website",
+      "script": "plus_greek",
+      "specificity": "vague",
+      "text": "The website of a Greek olive oil cooperative that should feel established and trustworthy."
+    },
+    {
+      "id": "b105",
+      "domain": "food",
+      "tone": "warm",
+      "medium": "long_form_reading",
+      "script": "plus_greek",
+      "specificity": "moderate",
+      "text": "A printed collection of Greek family recipes with long personal essays between them. It reads for extended stretches so comfort matters, and it should feel like a family document rather than a publication."
+    },
+    {
+      "id": "b106",
+      "domain": "nonprofit",
+      "tone": "technical",
+      "medium": "print_editorial",
+      "script": "latin_only",
+      "specificity": "moderate",
+      "text": "A printed research report from a policy think tank. It is dense with charts and footnotes, and it should read as rigorous and unpersuaded by its own conclusions."
+    },
+    {
+      "id": "b107",
+      "domain": "developer_tools",
+      "tone": "technical",
+      "medium": "long_form_reading",
+      "script": "cjk_adjacent",
+      "specificity": "vague",
+      "text": "A Japanese textbook on distributed systems that should read as precise."
+    },
+    {
+      "id": "b108",
+      "domain": "editorial",
+      "tone": "playful",
+      "medium": "print_editorial",
+      "script": "cjk_adjacent",
+      "specificity": "vague",
+      "text": "A print magazine about Tokyo street food, in Japanese and English, that should feel lively."
+    },
+    {
+      "id": "b109",
+      "domain": "education",
+      "tone": "elegant",
+      "medium": "presentation",
+      "script": "cjk_adjacent",
+      "specificity": "highly_specific",
+      "text": "A deck presenting a Japanese art university's programmes to international applicants, in Japanese and English. Headlines at 48px, body at 18px, projected and distributed as a PDF. The Latin must pair with a Japanese Mincho face at matched weight and x-height, and we need a light weight that holds when projected plus true italics. Refined and confident."
+    },
+    {
+      "id": "b110",
+      "domain": "developer_tools",
+      "tone": "elegant",
+      "medium": "print_editorial",
+      "script": "cjk_adjacent",
+      "specificity": "moderate",
+      "text": "A printed essay collection about software craft, published in Japanese and English. It should feel considered and literary, and the Latin must not look thin beside the Japanese."
+    },
+    {
+      "id": "b111",
+      "domain": "developer_tools",
+      "tone": "warm",
+      "medium": "packaging",
+      "script": "latin_only",
+      "specificity": "highly_specific",
+      "text": "Packaging for a beginner electronics kit aimed at teenagers. Instructions set at 8pt on a folded insert, so legibility at that size is critical and it prints on cheap uncoated stock. We need five weights, a monospace companion for the code, unambiguous digits for pin numbers, and a friendly rather than clinical feeling. The licence must permit commercial print use."
+    },
+    {
+      "id": "b112",
+      "domain": "healthcare",
+      "tone": "brutal",
+      "medium": "print_editorial",
+      "script": "plus_greek",
+      "specificity": "vague",
+      "text": "A harm reduction poster campaign in Greek that needs to feel blunt and unsentimental."
+    },
+    {
+      "id": "b113",
+      "domain": "nonprofit",
+      "tone": "authoritative",
+      "medium": "website",
+      "script": "cjk_adjacent",
+      "specificity": "highly_specific",
+      "text": "The site for a Japanese disaster relief organisation, in Japanese and English. Donation figures and case numbers require tabular figures, body sits at 16px with WCAG AA contrast, and the Latin must pair with a Japanese Gothic face without a weight mismatch. Five weights minimum, and the licence must permit self-hosting. It has to read as reliable under pressure."
+    },
+    {
+      "id": "b114",
+      "domain": "food",
+      "tone": "authoritative",
+      "medium": "website",
+      "script": "plus_vietnamese",
+      "specificity": "moderate",
+      "text": "The site for a Vietnamese coffee exporter selling to international buyers. It carries origin and grading data that needs to align, and it should read as credible and long established."
+    },
+    {
+      "id": "b115",
+      "domain": "fintech",
+      "tone": "elegant",
+      "medium": "packaging",
+      "script": "plus_cyrillic",
+      "specificity": "vague",
+      "text": "Packaging for a metal credit card aimed at Russian-speaking private clients, and it should feel restrained and expensive."
+    },
+    {
+      "id": "b116",
+      "domain": "public_sector",
+      "tone": "playful",
+      "medium": "website",
+      "script": "plus_greek",
+      "specificity": "moderate",
+      "text": "A Greek city council site encouraging young people to use public libraries. It is bilingual, and it should feel inviting rather than municipal while staying accessible."
+    },
+    {
+      "id": "b117",
+      "domain": "nonprofit",
+      "tone": "brutal",
+      "medium": "presentation",
+      "script": "plus_cyrillic",
+      "specificity": "moderate",
+      "text": "A deck for a Russian human rights organisation presenting findings to the press. It should feel uncompromising, and the Cyrillic has to carry that weight at headline sizes."
+    },
+    {
+      "id": "b118",
+      "domain": "luxury_retail",
+      "tone": "warm",
+      "medium": "website",
+      "script": "plus_cyrillic",
+      "specificity": "highly_specific",
+      "text": "The site for a Russian artisan ceramics brand. Body at 17px in Russian and English, product stories run long so it has to stay comfortable, Cyrillic italics for the maker quotes, and at least three weights. Prices and dimensions appear throughout, so tabular figures are needed. Warm and handmade without being twee."
+    },
+    {
+      "id": "b119",
+      "domain": "developer_tools",
+      "tone": "authoritative",
+      "medium": "long_form_reading",
+      "script": "latin_only",
+      "specificity": "moderate",
+      "text": "A printed book on software architecture aimed at senior engineers. It is read in long sittings and carries frequent code listings, so the text face has to pair with a monospace and stay comfortable at length."
+    },
+    {
+      "id": "b120",
+      "domain": "fintech",
+      "tone": "authoritative",
+      "medium": "website",
+      "script": "plus_cyrillic",
+      "specificity": "highly_specific",
+      "text": "A Ukrainian bank's public website, in Ukrainian and English. The Cyrillic must include a correctly drawn ghe with upturn and yi, not a Russian set with substitutions. WCAG AA contrast at 16px body, tabular figures for rate tables, and a licence permitting us to self-host on our own servers. The face should read as institutional and unexcitable."
+    },
+    {
+      "id": "b121",
+      "domain": "healthcare",
+      "tone": "brutal",
+      "medium": "packaging",
+      "script": "latin_only",
+      "specificity": "highly_specific",
+      "text": "Packaging for a sharps disposal container used in clinical settings. Warning text must be legible at two metres and survive printing on textured polypropylene, which swallows fine detail. We need extreme weights for hazard headings, a condensed cut to fit mandated regulatory text into a fixed area, and no ambiguity between 1 and 7. The tone is deliberately stark."
+    },
+    {
+      "id": "b122",
+      "domain": "food",
+      "tone": "technical",
+      "medium": "packaging",
+      "script": "cjk_adjacent",
+      "specificity": "moderate",
+      "text": "Packaging for a Japanese meal replacement product sold internationally. The back panel carries dense nutritional data in Japanese and English that must align, and the brand should read as engineered rather than wholesome."
+    },
+    {
+      "id": "b123",
+      "domain": "nonprofit",
+      "tone": "authoritative",
+      "medium": "print_editorial",
+      "script": "plus_cyrillic",
+      "specificity": "moderate",
+      "text": "A printed annual report for a Russian environmental foundation. It carries a lot of financial tables that need aligned figures, and it should read as accountable and serious."
+    },
+    {
+      "id": "b124",
+      "domain": "healthcare",
+      "tone": "technical",
+      "medium": "presentation",
+      "script": "cjk_adjacent",
+      "specificity": "moderate",
+      "text": "A deck for a joint research programme between a Tokyo hospital and a US partner, with slides in Japanese and English. The Latin needs to sit at the same visual weight as the Japanese, and the data slides carry a lot of small numerals."
+    },
+    {
+      "id": "b125",
+      "domain": "editorial",
+      "tone": "warm",
+      "medium": "website",
+      "script": "latin_only",
+      "specificity": "moderate",
+      "text": "The website of a regional independent newspaper. It should feel like part of the community rather than a wire service, and body text needs to stay comfortable for long articles read on a phone."
+    },
+    {
+      "id": "b126",
+      "domain": "luxury_retail",
+      "tone": "playful",
+      "medium": "print_editorial",
+      "script": "plus_vietnamese",
+      "specificity": "moderate",
+      "text": "A printed catalogue for a Vietnamese streetwear label. It is bilingual, and it should feel energetic and irreverent while the garment specifications stay readable at small sizes."
+    },
+    {
+      "id": "b127",
+      "domain": "public_sector",
+      "tone": "technical",
+      "medium": "presentation",
+      "script": "plus_vietnamese",
+      "specificity": "moderate",
+      "text": "A deck presenting infrastructure statistics to a Vietnamese provincial authority. It is dense with figures that need to align, and it should read as impartial and technical."
+    },
+    {
+      "id": "b128",
+      "domain": "nonprofit",
+      "tone": "warm",
+      "medium": "print_editorial",
+      "script": "latin_only",
+      "specificity": "moderate",
+      "text": "A printed supporter newsletter for an animal rescue charity. It should feel warm and personal, and the text runs long enough that it has to stay comfortable."
+    },
+    {
+      "id": "b129",
+      "domain": "fintech",
+      "tone": "authoritative",
+      "medium": "presentation",
+      "script": "latin_only",
+      "specificity": "moderate",
+      "text": "A quarterly earnings deck for a listed payments company. It has to project stability when read from the back of a boardroom, and still hold together in dense appendix tables at small sizes."
+    },
+    {
+      "id": "b130",
+      "domain": "food",
+      "tone": "playful",
+      "medium": "packaging",
+      "script": "plus_cyrillic",
+      "specificity": "moderate",
+      "text": "Packaging for a Russian range of flavoured popcorn. The bag carries product names in Cyrillic at large sizes and ingredients at small ones, and it should feel loud and fun on shelf."
+    },
+    {
+      "id": "b131",
+      "domain": "fintech",
+      "tone": "warm",
+      "medium": "website",
+      "script": "cjk_adjacent",
+      "specificity": "vague",
+      "text": "A remittance service for Japanese workers sending money home, site in Japanese and English, and it should feel approachable."
+    },
+    {
+      "id": "b132",
+      "domain": "public_sector",
+      "tone": "playful",
+      "medium": "mobile_ui",
+      "script": "cjk_adjacent",
+      "specificity": "moderate",
+      "text": "A Japanese city's app for reporting street maintenance problems. It should feel approachable enough that people actually use it, and the Latin should sit comfortably beside the Japanese labels."
+    },
+    {
+      "id": "b133",
+      "domain": "education",
+      "tone": "playful",
+      "medium": "packaging",
+      "script": "plus_cyrillic",
+      "specificity": "highly_specific",
+      "text": "Packaging for a Russian science kit for children. The box carries experiment instructions at 9pt in Cyrillic that must stay clear on recycled board, safety warnings requiring a heavy weight, and a display cut with personality for the product name. Five weights, and the licence must permit commercial print. Bright and exciting without undermining the safety text."
+    },
+    {
+      "id": "b134",
+      "domain": "healthcare",
+      "tone": "elegant",
+      "medium": "print_editorial",
+      "script": "plus_cyrillic",
+      "specificity": "highly_specific",
+      "text": "A commemorative printed history of a Russian teaching hospital, set in Russian with English captions at 11pt on cream uncoated stock, running to about 300 pages. We need old-style figures for the prose, true italics in both scripts, small caps for the Latin, and Cyrillic drawn by someone working inside the tradition rather than adapting the Latin."
+    },
+    {
+      "id": "b135",
+      "domain": "public_sector",
+      "tone": "authoritative",
+      "medium": "print_editorial",
+      "script": "plus_vietnamese",
+      "specificity": "highly_specific",
+      "text": "A Vietnamese national identity document booklet. Text sets at 7pt in a fixed area in Vietnamese and English, printed by intaglio, so strokes cannot be too fine and the diacritics must stay distinct at that size. We need tabular figures for numbers and dates, a licence permitting sovereign use, and a face with no stylistic personality at all."
+    },
+    {
+      "id": "b136",
+      "domain": "editorial",
+      "tone": "authoritative",
+      "medium": "print_editorial",
+      "script": "cjk_adjacent",
+      "specificity": "moderate",
+      "text": "A printed investigative journalism annual, published in Japanese and English. It has to carry gravity, and the Latin must not look flimsy beside the Japanese in the bilingual spreads."
+    },
+    {
+      "id": "b137",
+      "domain": "fintech",
+      "tone": "technical",
+      "medium": "print_editorial",
+      "script": "plus_greek",
+      "specificity": "vague",
+      "text": "A printed rate card for a Greek brokerage that needs to read as precise."
+    },
+    {
+      "id": "b138",
+      "domain": "healthcare",
+      "tone": "playful",
+      "medium": "packaging",
+      "script": "plus_vietnamese",
+      "specificity": "vague",
+      "text": "Packaging for children's vitamin gummies sold in Vietnam, labelled in Vietnamese and English, that should feel fun."
+    },
+    {
+      "id": "b139",
+      "domain": "food",
+      "tone": "playful",
+      "medium": "website",
+      "script": "plus_cyrillic",
+      "specificity": "highly_specific",
+      "text": "The site for a Russian bubble tea chain aimed at teenagers. Product names at 28px, allergen and ingredient text at 13px requiring real clarity, Cyrillic drawn with genuine personality rather than adapted from the Latin, five weights, and WCAG AA compliance. Bright and slightly absurd."
+    },
+    {
+      "id": "b140",
+      "domain": "gaming",
+      "tone": "elegant",
+      "medium": "long_form_reading",
+      "script": "latin_only",
+      "specificity": "highly_specific",
+      "text": "A narrative adventure game's in-world journal, published as a 180-page hardback. Text runs at 11pt with frequent italic passages standing in for handwriting, so the italic must be genuinely distinct rather than a slant. We need old-style figures, small caps for the in-world documents, and a face refined enough to feel like a period artefact without becoming pastiche."
+    },
+    {
+      "id": "b141",
+      "domain": "developer_tools",
+      "tone": "brutal",
+      "medium": "long_form_reading",
+      "script": "plus_cyrillic",
+      "specificity": "vague",
+      "text": "A Russian book of essays arguing that most software is bad, and it should feel uncompromising."
+    },
+    {
+      "id": "b142",
+      "domain": "education",
+      "tone": "warm",
+      "medium": "website",
+      "script": "latin_only",
+      "specificity": "moderate",
+      "text": "The website of a small liberal arts college. It should feel personal rather than corporate, and the prospectus text runs long enough to need comfortable reading."
+    },
+    {
+      "id": "b143",
+      "domain": "developer_tools",
+      "tone": "brutal",
+      "medium": "mobile_ui",
+      "script": "plus_cyrillic",
+      "specificity": "vague",
+      "text": "A Russian-language terminal emulator app that should feel stark."
+    },
+    {
+      "id": "b144",
+      "domain": "fintech",
+      "tone": "playful",
+      "medium": "website",
+      "script": "plus_vietnamese",
+      "specificity": "highly_specific",
+      "text": "A Vietnamese peer-to-peer payments site aimed at students. Vietnamese diacritics stack two deep on some vowels and must not collide at 16px body. We want a display cut for the hero and a text cut for the body from the same family, plus a variable weight axis. The tone is bright and casual without being juvenile."
+    },
+    {
+      "id": "b145",
+      "domain": "education",
+      "tone": "technical",
+      "medium": "packaging",
+      "script": "plus_cyrillic",
+      "specificity": "highly_specific",
+      "text": "Packaging for a Russian laboratory equipment set used in schools. The box carries specifications and calibration data at 8pt in Russian and English, so a condensed cut with tabular figures and unambiguous digits is required. It prints on corrugated board. Precise and unornamented."
+    },
+    {
+      "id": "b146",
+      "domain": "nonprofit",
+      "tone": "warm",
+      "medium": "mobile_ui",
+      "script": "plus_vietnamese",
+      "specificity": "moderate",
+      "text": "A mobile app connecting Vietnamese volunteers with local projects. It should feel welcoming, and the Vietnamese labels need to stay clear at interface sizes."
+    },
+    {
+      "id": "b147",
+      "domain": "developer_tools",
+      "tone": "warm",
+      "medium": "mobile_ui",
+      "script": "plus_greek",
+      "specificity": "moderate",
+      "text": "A mobile app teaching Greek schoolchildren to code. It should feel encouraging, and the Greek interface labels need to stay legible alongside the code snippets."
+    },
+    {
+      "id": "b148",
+      "domain": "gaming",
+      "tone": "warm",
+      "medium": "presentation",
+      "script": "cjk_adjacent",
+      "specificity": "highly_specific",
+      "text": "A deck presenting a cosy farming game to Japanese publishers, in Japanese and English. Headlines at 48px, body at 20px, projected. The Latin must pair with a rounded Japanese face without a weight clash, and we need four weights plus figures that read clearly in retention charts. It should feel gentle and inviting throughout."
+    },
+    {
+      "id": "b149",
+      "domain": "fintech",
+      "tone": "technical",
+      "medium": "print_editorial",
+      "script": "plus_greek",
+      "specificity": "highly_specific",
+      "text": "A printed derivatives pricing manual for a Greek institution, set in Greek and English. Body runs at 9pt in two columns, so the face needs a large x-height and open apertures at that size. The Greek must include polytonic accents for the historical appendix. Tabular lining figures throughout, and a monospace companion for the formula listings."
+    },
+    {
+      "id": "b150",
+      "domain": "public_sector",
+      "tone": "elegant",
+      "medium": "print_editorial",
+      "script": "latin_only",
+      "specificity": "vague",
+      "text": "A printed programme for a state ceremonial occasion that should feel formal and beautiful."
+    },
+    {
+      "id": "b151",
+      "domain": "public_sector",
+      "tone": "playful",
+      "medium": "mobile_ui",
+      "script": "latin_only",
+      "specificity": "highly_specific",
+      "text": "A city app encouraging household recycling. Type must work at 14px for instructions and 28px for section headings, needs five weights, and has to stay WCAG AA compliant while feeling friendly. Icons sit alongside labels, so a slightly rounded character helps, though it must not become childish. The licence must permit municipal use."
+    },
+    {
+      "id": "b152",
+      "domain": "luxury_retail",
+      "tone": "authoritative",
+      "medium": "website",
+      "script": "plus_greek",
+      "specificity": "vague",
+      "text": "The website of a Greek high jewellery house that should feel authoritative and old."
+    },
+    {
+      "id": "b153",
+      "domain": "luxury_retail",
+      "tone": "authoritative",
+      "medium": "mobile_ui",
+      "script": "cjk_adjacent",
+      "specificity": "moderate",
+      "text": "A mobile app for a Japanese luxury hotel group, in Japanese and English. It has to feel formal and reassuring, and the Latin should not look lightweight beside the Japanese."
+    },
+    {
+      "id": "b154",
+      "domain": "healthcare",
+      "tone": "elegant",
+      "medium": "website",
+      "script": "plus_greek",
+      "specificity": "highly_specific",
+      "text": "A private fertility clinic's website, in Greek and English. Body text at 17px with generous line height, because anxious readers scan slowly, Greek with correctly positioned tonos, at least three weights plus italics, and ideally a variable optical size axis since headings run to 48px. The feeling should be calm and refined rather than clinical."
+    },
+    {
+      "id": "b155",
+      "domain": "luxury_retail",
+      "tone": "brutal",
+      "medium": "mobile_ui",
+      "script": "latin_only",
+      "specificity": "highly_specific",
+      "text": "A shopping app for a label built on deliberate ugliness. Type must be aggressive at 15px body and 32px headings, needs an extreme heavy weight and a very tight condensed cut, and has to stay WCAG AA legible despite the harshness. Tabular figures for prices. The face should feel like it is shouting."
+    },
+    {
+      "id": "b156",
+      "domain": "healthcare",
+      "tone": "playful",
+      "medium": "presentation",
+      "script": "cjk_adjacent",
+      "specificity": "moderate",
+      "text": "A slide deck teaching handwashing to primary school children in Japan, presented in Japanese with some English. It needs to feel friendly and animated on screen, and the Latin should not look severe beside the Japanese."
+    },
+    {
+      "id": "b157",
+      "domain": "fintech",
+      "tone": "brutal",
+      "medium": "website",
+      "script": "plus_cyrillic",
+      "specificity": "moderate",
+      "text": "A crypto exchange aimed at Russian-speaking traders. The brand is deliberately harsh and anti-corporate, and the site is bilingual, so the Cyrillic has to carry the same aggression as the Latin rather than softening it."
+    },
+    {
+      "id": "b158",
+      "domain": "gaming",
+      "tone": "warm",
+      "medium": "long_form_reading",
+      "script": "plus_vietnamese",
+      "specificity": "highly_specific",
+      "text": "A Vietnamese-language visual novel published as a printed book, 300 pages at 11pt. Dialogue is heavily italicised, so the italic has to hold up across long passages. Vietnamese diacritics must not collide with descenders from the line above at the leading we can afford. The tone is affectionate and unhurried."
+    },
+    {
+      "id": "b159",
+      "domain": "gaming",
+      "tone": "authoritative",
+      "medium": "packaging",
+      "script": "latin_only",
+      "specificity": "highly_specific",
+      "text": "Packaging for a collector's edition of a military simulation game. The box carries a lot of specification text in a fixed area, so a condensed cut is needed, plus tabular figures for the hardware requirements. Spot UV on the title means strokes cannot be too fine. It should read as serious and technical rather than flashy."
+    },
+    {
+      "id": "b160",
+      "domain": "nonprofit",
+      "tone": "warm",
+      "medium": "mobile_ui",
+      "script": "plus_greek",
+      "specificity": "vague",
+      "text": "An app for a Greek community food-sharing project that should feel kind."
+    },
+    {
+      "id": "b161",
+      "domain": "healthcare",
+      "tone": "playful",
+      "medium": "packaging",
+      "script": "plus_greek",
+      "specificity": "moderate",
+      "text": "Packaging for a range of children's plasters sold in Greece. Type appears small on the box in both Greek and English, and it should feel cheerful without becoming hard to read."
+    },
+    {
+      "id": "b162",
+      "domain": "nonprofit",
+      "tone": "playful",
+      "medium": "packaging",
+      "script": "plus_vietnamese",
+      "specificity": "highly_specific",
+      "text": "Packaging for a Vietnamese school supplies kit distributed by a literacy charity. Text sets at 9pt in Vietnamese and English on uncoated board, so diacritics must stay distinct at that size and printing tolerance is poor. We need a bright display weight for the cover, four weights overall, and a licence permitting charitable redistribution. Cheerful and encouraging."
+    },
+    {
+      "id": "b163",
+      "domain": "fintech",
+      "tone": "technical",
+      "medium": "presentation",
+      "script": "latin_only",
+      "specificity": "moderate",
+      "text": "An internal architecture deck for a payments engineering team. Slides are dense with system diagrams and inline code, so we need something that stays readable when projected and pairs cleanly with a monospace."
+    },
+    {
+      "id": "b164",
+      "domain": "developer_tools",
+      "tone": "elegant",
+      "medium": "mobile_ui",
+      "script": "cjk_adjacent",
+      "specificity": "highly_specific",
+      "text": "A Japanese mobile app for reviewing pull requests on the move. Diff views at 13px need a monospace with clear distinction between similar glyphs, the interface Latin must pair with a Japanese Gothic face at matched weight, and we need four weights plus tabular figures for line numbers. Refined and calm rather than utilitarian."
+    },
+    {
+      "id": "b165",
+      "domain": "editorial",
+      "tone": "elegant",
+      "medium": "packaging",
+      "script": "plus_greek",
+      "specificity": "vague",
+      "text": "The jacket for a Greek poetry collection that should feel understated and beautiful."
+    },
+    {
+      "id": "b166",
+      "domain": "editorial",
+      "tone": "technical",
+      "medium": "website",
+      "script": "plus_vietnamese",
+      "specificity": "highly_specific",
+      "text": "A Vietnamese online encyclopedia. Body at 16px, heavy internal cross-linking so links must be distinguishable without relying on colour alone, tabular figures for data tables, and Vietnamese diacritics that do not clip against the line box. We need a minimum of five weights and a monospace companion for code examples. Neutral and precise, no personality."
+    },
+    {
+      "id": "b167",
+      "domain": "editorial",
+      "tone": "elegant",
+      "medium": "presentation",
+      "script": "latin_only",
+      "specificity": "moderate",
+      "text": "A deck pitching a new design magazine to investors. It should look considered enough that the typography is itself part of the argument, and it will be shown both projected and as a PDF."
+    },
+    {
+      "id": "b168",
+      "domain": "editorial",
+      "tone": "brutal",
+      "medium": "mobile_ui",
+      "script": "cjk_adjacent",
+      "specificity": "vague",
+      "text": "A mobile app for an underground Japanese music magazine that should feel abrasive."
+    },
+    {
+      "id": "b169",
+      "domain": "fintech",
+      "tone": "brutal",
+      "medium": "packaging",
+      "script": "cjk_adjacent",
+      "specificity": "highly_specific",
+      "text": "Packaging for a limited-run debit card released with a Japanese streetwear label. The lockup sets Latin and Japanese at the same optical size, so the Latin needs weights heavy enough not to look thin beside kanji. Foil stamping means no stroke can fall below 0.4pt at final size. The face should feel harsh and industrial."
+    },
+    {
+      "id": "b170",
+      "domain": "public_sector",
+      "tone": "warm",
+      "medium": "website",
+      "script": "plus_vietnamese",
+      "specificity": "vague",
+      "text": "A Vietnamese government site for new parents registering a birth that should feel supportive."
+    },
+    {
+      "id": "b171",
+      "domain": "public_sector",
+      "tone": "brutal",
+      "medium": "long_form_reading",
+      "script": "plus_greek",
+      "specificity": "moderate",
+      "text": "A Greek public inquiry report into an industrial disaster. It runs long and has to stay readable, but the tone should be unsparing rather than diplomatic."
+    },
+    {
+      "id": "b172",
+      "domain": "luxury_retail",
+      "tone": "brutal",
+      "medium": "print_editorial",
+      "script": "plus_greek",
+      "specificity": "vague",
+      "text": "A printed campaign booklet for a Greek avant-garde fashion label that should feel confrontational."
+    },
+    {
+      "id": "b173",
+      "domain": "fintech",
+      "tone": "brutal",
+      "medium": "print_editorial",
+      "script": "cjk_adjacent",
+      "specificity": "moderate",
+      "text": "A zine-style printed annual report for a fintech with offices in Tokyo and Berlin, set in Japanese and English. It should feel raw and photocopied, and the Latin has to survive being reproduced badly on purpose."
+    },
+    {
+      "id": "b174",
+      "domain": "fintech",
+      "tone": "warm",
+      "medium": "long_form_reading",
+      "script": "plus_vietnamese",
+      "specificity": "moderate",
+      "text": "A long-form financial literacy guide in Vietnamese, read both on screen and in print. Sessions run twenty minutes or more, so it needs to stay comfortable across extended reading, and the Vietnamese diacritics must not feel cramped."
+    },
+    {
+      "id": "b175",
+      "domain": "developer_tools",
+      "tone": "playful",
+      "medium": "website",
+      "script": "latin_only",
+      "specificity": "vague",
+      "text": "The site for an open source project with a cheerful mascot, and it should feel welcoming to first-time contributors."
+    },
+    {
+      "id": "b176",
+      "domain": "nonprofit",
+      "tone": "playful",
+      "medium": "long_form_reading",
+      "script": "plus_greek",
+      "specificity": "moderate",
+      "text": "A printed storybook collection produced by a Greek children's literacy charity. It reads for long stretches so it has to stay comfortable, and the Greek should feel warm and inviting to new readers."
+    },
+    {
+      "id": "b177",
+      "domain": "healthcare",
+      "tone": "elegant",
+      "medium": "mobile_ui",
+      "script": "latin_only",
+      "specificity": "moderate",
+      "text": "A mobile app for a cosmetic dermatology practice. It should feel refined and unhurried, and still function as an interface with clear hierarchy at small sizes."
+    },
+    {
+      "id": "b178",
+      "domain": "luxury_retail",
+      "tone": "playful",
+      "medium": "long_form_reading",
+      "script": "latin_only",
+      "specificity": "moderate",
+      "text": "A long-form printed brand book for a colourful accessories label. It reads for extended stretches so it has to stay comfortable, and the personality needs to survive being set at text sizes."
+    },
+    {
+      "id": "b179",
+      "domain": "editorial",
+      "tone": "playful",
+      "medium": "presentation",
+      "script": "plus_greek",
+      "specificity": "highly_specific",
+      "text": "A deck for a Greek satirical website pitching to advertisers. Headlines run at 54px in Greek and body at 20px. We need Greek that is funny in its own forms rather than a neutral face carrying funny words, four weights, an italic, and figures that work in audience charts. It has to survive being projected badly."
+    },
+    {
+      "id": "b180",
+      "domain": "developer_tools",
+      "tone": "technical",
+      "medium": "packaging",
+      "script": "plus_greek",
+      "specificity": "highly_specific",
+      "text": "Packaging for a Greek-manufactured single-board computer. The box carries specifications at 7pt in Greek and English inside a fixed area, so we need a condensed cut with tabular figures and unambiguous digits for the pin mappings. It prints on corrugated board, which holds detail poorly. Precise and engineering-led."
+    },
+    {
+      "id": "b181",
+      "domain": "gaming",
+      "tone": "warm",
+      "medium": "presentation",
+      "script": "plus_cyrillic",
+      "specificity": "vague",
+      "text": "A deck introducing a wholesome Russian mobile game to publishers that should feel friendly."
+    },
+    {
+      "id": "b182",
+      "domain": "education",
+      "tone": "playful",
+      "medium": "long_form_reading",
+      "script": "plus_greek",
+      "specificity": "highly_specific",
+      "text": "A printed Greek children's novel for eight to twelve year olds, 200 pages at 12pt. Reading sessions run long so comfort is critical, and the Greek must feel inviting rather than formal. We need a true italic for the diary sections, a display cut for the chapter openers, and letterforms that stay unambiguous for developing readers."
+    },
+    {
+      "id": "b183",
+      "domain": "education",
+      "tone": "elegant",
+      "medium": "website",
+      "script": "plus_cyrillic",
+      "specificity": "moderate",
+      "text": "The site for a Russian conservatoire. It should feel cultured and a little austere, and the Cyrillic has to carry that at both display and text sizes."
+    },
+    {
+      "id": "b184",
+      "domain": "developer_tools",
+      "tone": "authoritative",
+      "medium": "presentation",
+      "script": "plus_cyrillic",
+      "specificity": "vague",
+      "text": "A deck presenting a Russian enterprise database product to CTOs that should feel credible."
+    },
+    {
+      "id": "b185",
+      "domain": "healthcare",
+      "tone": "authoritative",
+      "medium": "long_form_reading",
+      "script": "cjk_adjacent",
+      "specificity": "highly_specific",
+      "text": "A Japanese pharmaceutical safety dossier submitted to regulators, several hundred pages in Japanese with English abstracts. The Latin must pair with Noto Serif JP without a weight mismatch, hold up at 9pt in two columns, and provide tabular figures for the adverse event tables. Nothing decorative, and the licence has to permit redistribution inside submitted PDFs."
+    },
+    {
+      "id": "b186",
+      "domain": "developer_tools",
+      "tone": "elegant",
+      "medium": "long_form_reading",
+      "script": "plus_vietnamese",
+      "specificity": "moderate",
+      "text": "A printed Vietnamese translation of a classic text on programming. It reads for long stretches so comfort matters, and it should feel like a serious book rather than a manual."
+    },
+    {
+      "id": "b187",
+      "domain": "nonprofit",
+      "tone": "technical",
+      "medium": "presentation",
+      "script": "plus_greek",
+      "specificity": "vague",
+      "text": "A deck presenting programme evaluation results for a Greek NGO that should feel rigorous."
+    },
+    {
+      "id": "b188",
+      "domain": "food",
+      "tone": "authoritative",
+      "medium": "packaging",
+      "script": "plus_vietnamese",
+      "specificity": "highly_specific",
+      "text": "Packaging for a Vietnamese premium fish sauce sold in export markets. The label carries protein content, origin and ageing data in Vietnamese and English at 7pt inside a fixed area, so a condensed cut with tabular figures is needed and the diacritics must stay distinct at that size. It prints on paper applied to glass. Traditional and authoritative."
+    },
+    {
+      "id": "b189",
+      "domain": "nonprofit",
+      "tone": "elegant",
+      "medium": "long_form_reading",
+      "script": "plus_cyrillic",
+      "specificity": "vague",
+      "text": "A printed history of a Russian cultural foundation that should feel refined."
+    },
+    {
+      "id": "b190",
+      "domain": "nonprofit",
+      "tone": "warm",
+      "medium": "website",
+      "script": "cjk_adjacent",
+      "specificity": "vague",
+      "text": "The site for a Japanese community mental health charity that should feel gentle."
+    },
+    {
+      "id": "b191",
+      "domain": "nonprofit",
+      "tone": "playful",
+      "medium": "mobile_ui",
+      "script": "cjk_adjacent",
+      "specificity": "vague",
+      "text": "A Japanese app that gamifies volunteering for young people and should feel upbeat."
+    },
+    {
+      "id": "b192",
+      "domain": "nonprofit",
+      "tone": "elegant",
+      "medium": "website",
+      "script": "plus_vietnamese",
+      "specificity": "highly_specific",
+      "text": "The site for a Vietnamese heritage conservation trust. Body at 17px in Vietnamese and English, with long essays about restoration projects, so it has to stay comfortable across extended reading. Vietnamese diacritics must not crowd at that size, we need at least three weights with true italics for the pull quotes, and tabular figures for the donation tiers. Refined and unhurried."
+    },
+    {
+      "id": "b193",
+      "domain": "luxury_retail",
+      "tone": "elegant",
+      "medium": "print_editorial",
+      "script": "plus_cyrillic",
+      "specificity": "vague",
+      "text": "A printed invitation suite for a Russian couture house that should feel exquisite."
+    },
+    {
+      "id": "b194",
+      "domain": "healthcare",
+      "tone": "authoritative",
+      "medium": "website",
+      "script": "plus_cyrillic",
+      "specificity": "moderate",
+      "text": "A public health information site for a Russian-speaking population. It has to read as an official source people can trust, and the Cyrillic needs to stay legible for older readers at default browser sizes."
+    },
+    {
+      "id": "b195",
+      "domain": "gaming",
+      "tone": "elegant",
+      "medium": "website",
+      "script": "cjk_adjacent",
+      "specificity": "vague",
+      "text": "The site for a Japanese puzzle game with a minimal aesthetic, in Japanese and English, and it should feel quiet and refined."
+    },
+    {
+      "id": "b196",
+      "domain": "editorial",
+      "tone": "technical",
+      "medium": "mobile_ui",
+      "script": "plus_cyrillic",
+      "specificity": "moderate",
+      "text": "A Russian-language long-read app with a reading mode. It needs to feel precise and unobtrusive, and the Cyrillic must stay comfortable at the small sizes people actually use."
+    },
+    {
+      "id": "b197",
+      "domain": "developer_tools",
+      "tone": "authoritative",
+      "medium": "presentation",
+      "script": "plus_vietnamese",
+      "specificity": "highly_specific",
+      "text": "A deck presenting a Vietnamese cloud platform's reliability record to enterprise buyers. Headlines at 44px, dense uptime tables at 14px requiring tabular figures, projected and distributed as a PDF. Vietnamese diacritics must not clip at heading sizes. We need five weights and a licence permitting PDF embedding. Formal and evidence-led."
+    },
+    {
+      "id": "b198",
+      "domain": "education",
+      "tone": "technical",
+      "medium": "long_form_reading",
+      "script": "plus_vietnamese",
+      "specificity": "vague",
+      "text": "A Vietnamese university engineering textbook that should read as rigorous."
+    },
+    {
+      "id": "b199",
+      "domain": "gaming",
+      "tone": "brutal",
+      "medium": "website",
+      "script": "plus_greek",
+      "specificity": "moderate",
+      "text": "The site for a Greek horror game. It is bilingual, and the Greek has to feel as menacing as the Latin, which rules out most of the obvious display faces."
+    },
+    {
+      "id": "b200",
+      "domain": "editorial",
+      "tone": "warm",
+      "medium": "print_editorial",
+      "script": "plus_greek",
+      "specificity": "vague",
+      "text": "A printed Greek food and travel quarterly that should feel welcoming."
+    },
+    {
+      "id": "b201",
+      "domain": "healthcare",
+      "tone": "warm",
+      "medium": "long_form_reading",
+      "script": "cjk_adjacent",
+      "specificity": "vague",
+      "text": "A book-length guide for caregivers of dementia patients, published in Japanese and English, and it should feel compassionate."
+    },
+    {
+      "id": "b202",
+      "domain": "gaming",
+      "tone": "brutal",
+      "medium": "packaging",
+      "script": "plus_vietnamese",
+      "specificity": "moderate",
+      "text": "Packaging for a Vietnamese-developed survival horror game. Box text runs in Vietnamese and English at small sizes, and it needs to feel genuinely threatening while staying legible under shrinkwrap."
+    },
+    {
+      "id": "b203",
+      "domain": "healthcare",
+      "tone": "brutal",
+      "medium": "website",
+      "script": "plus_vietnamese",
+      "specificity": "vague",
+      "text": "A blunt anti-smoking campaign site aimed at young men in Vietnam, written in Vietnamese."
+    },
+    {
+      "id": "b204",
+      "domain": "nonprofit",
+      "tone": "technical",
+      "medium": "packaging",
+      "script": "latin_only",
+      "specificity": "vague",
+      "text": "Packaging for a water filtration kit distributed by an aid organisation that should feel practical and clear."
+    },
+    {
+      "id": "b205",
+      "domain": "editorial",
+      "tone": "brutal",
+      "medium": "long_form_reading",
+      "script": "plus_cyrillic",
+      "specificity": "highly_specific",
+      "text": "A Russian collection of dissident essays, 200 pages at 10pt. The setting should feel stark and typewriter-adjacent without literally being a typewriter face. The Cyrillic must be drawn with the same severity as the Latin, we need a very heavy weight for the title pages, and the italic should read as emphasis rather than decoration."
+    },
+    {
+      "id": "b206",
+      "domain": "nonprofit",
+      "tone": "brutal",
+      "medium": "website",
+      "script": "latin_only",
+      "specificity": "highly_specific",
+      "text": "A campaign site for an organisation exposing labour abuses. Headlines at 64px must feel like an accusation, body at 17px must stay WCAG AA compliant. We need an extreme heavy weight, a condensed cut for the data callouts, tabular figures for the statistics, and a licence permitting unrestricted campaign use. Nothing that softens the message."
+    },
+    {
+      "id": "b207",
+      "domain": "public_sector",
+      "tone": "technical",
+      "medium": "print_editorial",
+      "script": "latin_only",
+      "specificity": "moderate",
+      "text": "A printed statistical yearbook from a national statistics office. It is almost entirely tables, so figures must align perfectly and stay legible at small sizes, and it should read as neutral."
+    },
+    {
+      "id": "b208",
+      "domain": "healthcare",
+      "tone": "playful",
+      "medium": "long_form_reading",
+      "script": "plus_cyrillic",
+      "specificity": "moderate",
+      "text": "An illustrated health education book for Russian teenagers. It is read for long stretches, so it has to stay comfortable, and the tone should be light rather than lecturing."
+    },
+    {
+      "id": "b209",
+      "domain": "developer_tools",
+      "tone": "playful",
+      "medium": "print_editorial",
+      "script": "plus_vietnamese",
+      "specificity": "highly_specific",
+      "text": "A printed zine about the Vietnamese indie game development scene. Body at 10pt with code snippets requiring a monospace, headlines that feel hand-made and energetic, and Vietnamese diacritics that stay legible on newsprint, which spreads ink. We need a display cut plus at least three text weights, and the licence must permit small-run commercial printing."
+    },
+    {
+      "id": "b210",
+      "domain": "gaming",
+      "tone": "playful",
+      "medium": "mobile_ui",
+      "script": "plus_greek",
+      "specificity": "moderate",
+      "text": "A casual mobile game aimed at Greek players. The interface is dense with small Greek labels, and it should feel bright and inviting without the Greek becoming hard to parse."
+    }
+  ]
+}
