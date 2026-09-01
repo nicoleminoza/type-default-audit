@@ -22,6 +22,7 @@ Usage:
 """
 
 import argparse
+import hashlib
 import json
 import re
 import sys
@@ -89,8 +90,19 @@ REFUSAL_MARKERS = ("i can't", "i cannot", "i'm unable", "i am unable",
 _write_lock = threading.Lock()
 
 
-def record_key(brief_id, model_key, sample_index):
-    return f"{PROMPT_VERSION}|{model_key}|{brief_id}|{sample_index}"
+def brief_fingerprint(text):
+    """Short hash of the brief text, used in the record key.
+
+    Without this, editing a brief would leave its old responses looking valid
+    and a rerun would skip them, so results would silently mix answers to two
+    different questions. Changing a brief now invalidates exactly that brief's
+    responses and nothing else.
+    """
+    return hashlib.sha256(text.encode("utf-8")).hexdigest()[:12]
+
+
+def record_key(brief_id, model_key, sample_index, fingerprint):
+    return f"{PROMPT_VERSION}|{model_key}|{brief_id}|{fingerprint}|{sample_index}"
 
 
 def load_completed_keys(path):
@@ -167,7 +179,8 @@ def parse_response(text):
 
 def run_one(task, provider, path):
     brief, model_key, sample_index = task
-    key = record_key(brief["id"], model_key, sample_index)
+    fingerprint = brief_fingerprint(brief["text"])
+    key = record_key(brief["id"], model_key, sample_index, fingerprint)
     prompt = PROMPT_TEMPLATE.format(brief=brief["text"])
 
     started = time.time()
@@ -179,6 +192,8 @@ def run_one(task, provider, path):
         "model_id": MODELS[model_key]["model_id"],
         "sample_index": sample_index,
         "prompt_version": PROMPT_VERSION,
+        "brief_fingerprint": fingerprint,
+        "brief_text": brief["text"],
         "prompt": prompt,
         "requested_at_utc": datetime.now(timezone.utc).isoformat(),
         "brief_tags": {k: brief[k] for k in
@@ -261,7 +276,8 @@ def main():
         for brief in briefs
         for key in model_keys
         for sample in range(1, args.samples + 1)
-        if record_key(brief["id"], key, sample) not in done
+        if record_key(brief["id"], key, sample,
+                      brief_fingerprint(brief["text"])) not in done
     ]
     total = len(briefs) * len(model_keys) * args.samples
 

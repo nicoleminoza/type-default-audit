@@ -1,6 +1,6 @@
 {
   "provenance": {
-    "built_at_utc": "2026-09-01T04:05:23.894747+00:00",
+    "built_at_utc": "2026-09-01T04:34:20.070287+00:00",
     "brief_count": 210,
     "grid_seed": 20260831,
     "authored_by": "Claude (Opus 5), reviewed by Nicole Minoza",
@@ -103,13 +103,13 @@
   "specificity_lengths": {
     "vague": {
       "count": 70,
-      "mean_words": 14.3,
+      "mean_words": 16.8,
       "min_words": 9,
-      "max_words": 22
+      "max_words": 25
     },
     "moderate": {
       "count": 70,
-      "mean_words": 30.4,
+      "mean_words": 31.0,
       "min_words": 24,
       "max_words": 44
     },
@@ -128,7 +128,7 @@
       "medium": "packaging",
       "script": "plus_vietnamese",
       "specificity": "vague",
-      "text": "Packaging for a Vietnamese chilli sauce with an aggressive brand personality."
+      "text": "Packaging for a Vietnamese chilli sauce, labelled in Vietnamese and English, with an aggressive brand personality."
     },
     {
       "id": "b002",
@@ -191,7 +191,7 @@
       "medium": "presentation",
       "script": "plus_vietnamese",
       "specificity": "vague",
-      "text": "A deck introducing a new Vietnamese literary imprint to booksellers, and it should feel cultured."
+      "text": "A deck introducing a new Vietnamese literary imprint to booksellers, presented in Vietnamese, and it should feel cultured."
     },
     {
       "id": "b009",
@@ -218,7 +218,7 @@
       "medium": "print_editorial",
       "script": "plus_vietnamese",
       "specificity": "vague",
-      "text": "A quarterly print report for the wealth division of a Vietnamese private bank needs a text face with some refinement to it."
+      "text": "A quarterly print report for the wealth division of a Vietnamese private bank, set in Vietnamese and English, needs a text face with some refinement."
     },
     {
       "id": "b012",
@@ -254,7 +254,7 @@
       "medium": "mobile_ui",
       "script": "plus_vietnamese",
       "specificity": "vague",
-      "text": "A news reader app for a Vietnamese daily that should feel precise and current."
+      "text": "A news reader app for a Vietnamese daily, with all content in Vietnamese, that should feel precise and current."
     },
     {
       "id": "b016",
@@ -317,7 +317,7 @@
       "medium": "print_editorial",
       "script": "plus_greek",
       "specificity": "vague",
-      "text": "A printed Greek alphabet workbook for young children that should feel friendly."
+      "text": "A printed Greek alphabet workbook for young children, set in Greek, that should feel friendly."
     },
     {
       "id": "b023",
@@ -371,7 +371,7 @@
       "medium": "presentation",
       "script": "plus_cyrillic",
       "specificity": "vague",
-      "text": "A deck presenting a playful Russian accessories brand to buyers, and it should feel light and confident."
+      "text": "A deck presenting a playful Russian accessories brand to buyers, presented in Russian and English, and it should feel light and confident."
     },
     {
       "id": "b029",
@@ -452,7 +452,7 @@
       "medium": "mobile_ui",
       "script": "plus_vietnamese",
       "specificity": "vague",
-      "text": "A mobile companion app for a Vietnamese esports league that should feel sharp and technical."
+      "text": "A mobile companion app for a Vietnamese esports league, with the interface in Vietnamese, that should feel sharp and technical."
     },
     {
       "id": "b038",
@@ -470,7 +470,7 @@
       "medium": "presentation",
       "script": "plus_vietnamese",
       "specificity": "vague",
-      "text": "A deck introducing a Vietnamese family-run noodle brand to supermarket buyers, and it should feel warm and personal."
+      "text": "A deck introducing a Vietnamese family-run noodle brand to supermarket buyers, presented in Vietnamese and English, and it should feel warm and personal."
     },
     {
       "id": "b040",
@@ -488,7 +488,7 @@
       "medium": "long_form_reading",
       "script": "cjk_adjacent",
       "specificity": "vague",
-      "text": "A Japanese municipal planning document that should read as official."
+      "text": "A Japanese municipal planning document, set in Japanese with English summaries, that should read as official."
     },
     {
       "id": "b042",
@@ -533,7 +533,7 @@
       "medium": "presentation",
       "script": "plus_vietnamese",
       "specificity": "moderate",
-      "text": "A deck for a Vietnamese game studio presenting engine performance results. It is dense with benchmark tables and needs figures that align, and it should read as rigorous rather than promotional."
+      "text": "A deck for a Vietnamese game studio presenting engine performance results, in Vietnamese and English. It is dense with benchmark tables and needs figures that align, and it should read as rigorous rather than promotional."
     },
     {
       "id": "b047",
@@ -551,7 +551,7 @@
       "medium": "website",
       "script": "cjk_adjacent",
       "specificity": "vague",
-      "text": "A Japanese online learning platform for mathematics that should feel precise."
+      "text": "A Japanese online learning platform for mathematics, with the interface in Japanese and English, that should feel precise."
     },
     {
       "id": "b049",
@@ -578,7 +578,7 @@
       "medium": "presentation",
       "script": "plus_vietnamese",
       "specificity": "vague",
-      "text": "A pitch deck for a Vietnamese consumer payments startup that should come across as energetic rather than corporate."
+      "text": "A pitch deck for a Vietnamese consumer payments startup, presented in Vietnamese, that should come across as energetic rather than corporate."
     },
     {
       "id": "b052",
@@ -686,7 +686,7 @@
       "medium": "presentation",
       "script": "plus_greek",
       "specificity": "vague",
-      "text": "A deck for a Greek ministry announcing a policy programme that should feel official."
+      "text": "A deck for a Greek ministry announcing a policy programme, presented in Greek, that should feel official."
     },
     {
       "id": "b064",
@@ -758,7 +758,7 @@
       "medium": "long_form_reading",
       "script": "plus_vietnamese",
       "specificity": "vague",
-      "text": "A printed brand history for a Vietnamese jeweller that should feel established."
+      "text": "A printed brand history for a Vietnamese jeweller, set in Vietnamese and English, that should feel established."
     },
     {
       "id": "b072",
@@ -812,7 +812,7 @@
       "medium": "mobile_ui",
       "script": "plus_vietnamese",
       "specificity": "vague",
-      "text": "A shopping app for a Vietnamese luxury department store that should feel upmarket."
+      "text": "A shopping app for a Vietnamese luxury department store, with the interface in Vietnamese, that should feel upmarket."
     },
     {
       "id": "b078",
@@ -821,7 +821,7 @@
       "medium": "packaging",
       "script": "cjk_adjacent",
       "specificity": "vague",
-      "text": "Packaging for a Japanese emergency supply kit that should feel urgent."
+      "text": "Packaging for a Japanese emergency supply kit, labelled in Japanese and English, that should feel urgent."
     },
     {
       "id": "b079",
@@ -875,7 +875,7 @@
       "medium": "print_editorial",
       "script": "plus_cyrillic",
       "specificity": "vague",
-      "text": "A printed rulebook for a Russian historical strategy game that should feel weighty and official."
+      "text": "A printed rulebook for a Russian historical strategy game, set in Russian, that should feel weighty and official."
     },
     {
       "id": "b085",
@@ -911,7 +911,7 @@
       "medium": "website",
       "script": "plus_greek",
       "specificity": "vague",
-      "text": "A Greek university's site for its physics department that should feel precise."
+      "text": "A Greek university's site for its physics department, written in Greek and English, that should feel precise."
     },
     {
       "id": "b089",
@@ -947,7 +947,7 @@
       "medium": "print_editorial",
       "script": "plus_vietnamese",
       "specificity": "moderate",
-      "text": "A printed Vietnamese activity book for primary schoolchildren. Text appears at large sizes alongside illustrations, and it should feel energetic while the diacritics stay clear for early readers."
+      "text": "A printed Vietnamese activity book for primary schoolchildren, set in Vietnamese. Text appears at large sizes alongside illustrations, and it should feel energetic while the Vietnamese diacritics stay clear for early readers."
     },
     {
       "id": "b093",
@@ -965,7 +965,7 @@
       "medium": "packaging",
       "script": "plus_vietnamese",
       "specificity": "moderate",
-      "text": "Packaging for a Vietnamese fair-trade coffee sold to fund a literacy programme. It is bilingual, and it should feel considered and quietly premium rather than charitable."
+      "text": "Packaging for a Vietnamese fair-trade coffee sold to fund a literacy programme. The label carries Vietnamese and English together, and it should feel considered and quietly premium rather than charitable."
     },
     {
       "id": "b095",
@@ -1019,7 +1019,7 @@
       "medium": "presentation",
       "script": "cjk_adjacent",
       "specificity": "vague",
-      "text": "A deck for a Japanese kindergarten introducing itself to parents that should feel warm."
+      "text": "A deck for a Japanese kindergarten introducing itself to parents, presented in Japanese with some English, that should feel warm."
     },
     {
       "id": "b101",
@@ -1046,7 +1046,7 @@
       "medium": "mobile_ui",
       "script": "plus_cyrillic",
       "specificity": "vague",
-      "text": "A loyalty app for a Russian department store that should feel welcoming."
+      "text": "A loyalty app for a Russian department store, with the interface in Russian, that should feel welcoming."
     },
     {
       "id": "b104",
@@ -1055,7 +1055,7 @@
       "medium": "website",
       "script": "plus_greek",
       "specificity": "vague",
-      "text": "The website of a Greek olive oil cooperative that should feel established and trustworthy."
+      "text": "The website of a Greek olive oil cooperative, written in Greek and English, that should feel established and trustworthy."
     },
     {
       "id": "b105",
@@ -1064,7 +1064,7 @@
       "medium": "long_form_reading",
       "script": "plus_greek",
       "specificity": "moderate",
-      "text": "A printed collection of Greek family recipes with long personal essays between them. It reads for extended stretches so comfort matters, and it should feel like a family document rather than a publication."
+      "text": "A printed collection of Greek family recipes with long personal essays between them, set in Greek. It reads for extended stretches so comfort matters, and it should feel like a family document rather than a publication."
     },
     {
       "id": "b106",
@@ -1145,7 +1145,7 @@
       "medium": "website",
       "script": "plus_vietnamese",
       "specificity": "moderate",
-      "text": "The site for a Vietnamese coffee exporter selling to international buyers. It carries origin and grading data that needs to align, and it should read as credible and long established."
+      "text": "The site for a Vietnamese coffee exporter selling to international buyers, published in Vietnamese and English. It carries origin and grading data that needs to align, and it should read as credible and long established."
     },
     {
       "id": "b115",
@@ -1163,7 +1163,7 @@
       "medium": "website",
       "script": "plus_greek",
       "specificity": "moderate",
-      "text": "A Greek city council site encouraging young people to use public libraries. It is bilingual, and it should feel inviting rather than municipal while staying accessible."
+      "text": "A Greek city council site encouraging young people to use public libraries. Every page appears in Greek and English, and it should feel inviting rather than municipal while staying accessible."
     },
     {
       "id": "b117",
@@ -1226,7 +1226,7 @@
       "medium": "print_editorial",
       "script": "plus_cyrillic",
       "specificity": "moderate",
-      "text": "A printed annual report for a Russian environmental foundation. It carries a lot of financial tables that need aligned figures, and it should read as accountable and serious."
+      "text": "A printed annual report for a Russian environmental foundation, set in Russian and English. It carries a lot of financial tables that need aligned figures, and the Cyrillic should read as accountable and serious."
     },
     {
       "id": "b124",
@@ -1253,7 +1253,7 @@
       "medium": "print_editorial",
       "script": "plus_vietnamese",
       "specificity": "moderate",
-      "text": "A printed catalogue for a Vietnamese streetwear label. It is bilingual, and it should feel energetic and irreverent while the garment specifications stay readable at small sizes."
+      "text": "A printed catalogue for a Vietnamese streetwear label, set in Vietnamese and English. It should feel energetic and irreverent while the garment specifications stay readable at small sizes."
     },
     {
       "id": "b127",
@@ -1262,7 +1262,7 @@
       "medium": "presentation",
       "script": "plus_vietnamese",
       "specificity": "moderate",
-      "text": "A deck presenting infrastructure statistics to a Vietnamese provincial authority. It is dense with figures that need to align, and it should read as impartial and technical."
+      "text": "A deck presenting infrastructure statistics to a Vietnamese provincial authority, in Vietnamese. It is dense with figures that need to align, and it should read as impartial and technical."
     },
     {
       "id": "b128",
@@ -1352,7 +1352,7 @@
       "medium": "print_editorial",
       "script": "plus_greek",
       "specificity": "vague",
-      "text": "A printed rate card for a Greek brokerage that needs to read as precise."
+      "text": "A printed rate card for a Greek brokerage, set in Greek and English, that needs to read as precise."
     },
     {
       "id": "b138",
@@ -1388,7 +1388,7 @@
       "medium": "long_form_reading",
       "script": "plus_cyrillic",
       "specificity": "vague",
-      "text": "A Russian book of essays arguing that most software is bad, and it should feel uncompromising."
+      "text": "A Russian book of essays arguing that most software is bad, written in Russian, and it should feel uncompromising."
     },
     {
       "id": "b142",
@@ -1487,7 +1487,7 @@
       "medium": "website",
       "script": "plus_greek",
       "specificity": "vague",
-      "text": "The website of a Greek high jewellery house that should feel authoritative and old."
+      "text": "The website of a Greek high jewellery house, written in Greek and English, that should feel authoritative and old."
     },
     {
       "id": "b153",
@@ -1559,7 +1559,7 @@
       "medium": "mobile_ui",
       "script": "plus_greek",
       "specificity": "vague",
-      "text": "An app for a Greek community food-sharing project that should feel kind."
+      "text": "An app for a Greek community food-sharing project, with the interface in Greek, that should feel kind."
     },
     {
       "id": "b161",
@@ -1604,7 +1604,7 @@
       "medium": "packaging",
       "script": "plus_greek",
       "specificity": "vague",
-      "text": "The jacket for a Greek poetry collection that should feel understated and beautiful."
+      "text": "The jacket for a Greek poetry collection, with the title set in Greek, that should feel understated and beautiful."
     },
     {
       "id": "b166",
@@ -1631,7 +1631,7 @@
       "medium": "mobile_ui",
       "script": "cjk_adjacent",
       "specificity": "vague",
-      "text": "A mobile app for an underground Japanese music magazine that should feel abrasive."
+      "text": "A mobile app for an underground Japanese music magazine, with the interface in Japanese and English, that should feel abrasive."
     },
     {
       "id": "b169",
@@ -1649,7 +1649,7 @@
       "medium": "website",
       "script": "plus_vietnamese",
       "specificity": "vague",
-      "text": "A Vietnamese government site for new parents registering a birth that should feel supportive."
+      "text": "A Vietnamese government site for new parents registering a birth, written in Vietnamese, that should feel supportive."
     },
     {
       "id": "b171",
@@ -1658,7 +1658,7 @@
       "medium": "long_form_reading",
       "script": "plus_greek",
       "specificity": "moderate",
-      "text": "A Greek public inquiry report into an industrial disaster. It runs long and has to stay readable, but the tone should be unsparing rather than diplomatic."
+      "text": "A Greek public inquiry report into an industrial disaster, set in Greek with an English summary. It runs long and has to stay readable, but the tone should be unsparing rather than diplomatic."
     },
     {
       "id": "b172",
@@ -1667,7 +1667,7 @@
       "medium": "print_editorial",
       "script": "plus_greek",
       "specificity": "vague",
-      "text": "A printed campaign booklet for a Greek avant-garde fashion label that should feel confrontational."
+      "text": "A printed campaign booklet for a Greek avant-garde fashion label, set in Greek and English, that should feel confrontational."
     },
     {
       "id": "b173",
@@ -1748,7 +1748,7 @@
       "medium": "presentation",
       "script": "plus_cyrillic",
       "specificity": "vague",
-      "text": "A deck introducing a wholesome Russian mobile game to publishers that should feel friendly."
+      "text": "A deck introducing a wholesome Russian mobile game to publishers, presented in Russian and English, that should feel friendly."
     },
     {
       "id": "b182",
@@ -1775,7 +1775,7 @@
       "medium": "presentation",
       "script": "plus_cyrillic",
       "specificity": "vague",
-      "text": "A deck presenting a Russian enterprise database product to CTOs that should feel credible."
+      "text": "A deck presenting a Russian enterprise database product to CTOs, presented in Russian and English, that should feel credible."
     },
     {
       "id": "b185",
@@ -1802,7 +1802,7 @@
       "medium": "presentation",
       "script": "plus_greek",
       "specificity": "vague",
-      "text": "A deck presenting programme evaluation results for a Greek NGO that should feel rigorous."
+      "text": "A deck presenting programme evaluation results for a Greek NGO, presented in Greek, that should feel rigorous."
     },
     {
       "id": "b188",
@@ -1820,7 +1820,7 @@
       "medium": "long_form_reading",
       "script": "plus_cyrillic",
       "specificity": "vague",
-      "text": "A printed history of a Russian cultural foundation that should feel refined."
+      "text": "A printed history of a Russian cultural foundation, set in Russian, that should feel refined."
     },
     {
       "id": "b190",
@@ -1829,7 +1829,7 @@
       "medium": "website",
       "script": "cjk_adjacent",
       "specificity": "vague",
-      "text": "The site for a Japanese community mental health charity that should feel gentle."
+      "text": "The site for a Japanese community mental health charity, written in Japanese and English, that should feel gentle."
     },
     {
       "id": "b191",
@@ -1838,7 +1838,7 @@
       "medium": "mobile_ui",
       "script": "cjk_adjacent",
       "specificity": "vague",
-      "text": "A Japanese app that gamifies volunteering for young people and should feel upbeat."
+      "text": "A Japanese app that gamifies volunteering for young people, with the interface in Japanese and English, and it should feel upbeat."
     },
     {
       "id": "b192",
@@ -1856,7 +1856,7 @@
       "medium": "print_editorial",
       "script": "plus_cyrillic",
       "specificity": "vague",
-      "text": "A printed invitation suite for a Russian couture house that should feel exquisite."
+      "text": "A printed invitation suite for a Russian couture house, set in Russian and English, that should feel exquisite."
     },
     {
       "id": "b194",
@@ -1901,7 +1901,7 @@
       "medium": "long_form_reading",
       "script": "plus_vietnamese",
       "specificity": "vague",
-      "text": "A Vietnamese university engineering textbook that should read as rigorous."
+      "text": "A Vietnamese university engineering textbook, written in Vietnamese with English terminology, that should read as rigorous."
     },
     {
       "id": "b199",
@@ -1919,7 +1919,7 @@
       "medium": "print_editorial",
       "script": "plus_greek",
       "specificity": "vague",
-      "text": "A printed Greek food and travel quarterly that should feel welcoming."
+      "text": "A printed Greek food and travel quarterly, written in Greek and English, that should feel welcoming."
     },
     {
       "id": "b201",
@@ -1991,7 +1991,7 @@
       "medium": "long_form_reading",
       "script": "plus_cyrillic",
       "specificity": "moderate",
-      "text": "An illustrated health education book for Russian teenagers. It is read for long stretches, so it has to stay comfortable, and the tone should be light rather than lecturing."
+      "text": "An illustrated health education book for Russian teenagers, written in Russian. It is read for long stretches, so it has to stay comfortable, and the tone should be light rather than lecturing."
     },
     {
       "id": "b209",

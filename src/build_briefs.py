@@ -20,6 +20,7 @@ Usage:  python src/build_briefs.py [texts_dir] [--force]
 
 import glob
 import json
+import re
 import sys
 from collections import Counter
 from datetime import datetime, timezone
@@ -28,12 +29,54 @@ from config import DATA_DIR, PROJECT_ROOT
 
 # Words that should appear in a brief tagged with each non-Latin script need.
 # Latin-only briefs are unconstrained, so they are not checked.
-SCRIPT_MARKERS = {
-    "plus_cyrillic": ("russian", "ukrainian", "serbian", "bulgarian", "cyrillic"),
-    "plus_greek": ("greek",),
-    "plus_vietnamese": ("vietnamese",),
-    "cjk_adjacent": ("japanese", "korean", "chinese", "kanji", "noto s", "mincho", "gothic"),
+# A brief tagged with a non-Latin script must state that the TEXT is in that
+# language. Naming a nationality is not enough: "a Vietnamese chilli sauce"
+# describes cuisine, and a model reading it will reasonably recommend Latin-only
+# display faces. That exact case was caught in the pilot, where none of the seven
+# fonts returned for b001 supported Vietnamese. A tag the text does not carry
+# puts a dead brief in the slice, which is worse than no tag at all.
+SCRIPT_LANGUAGES = {
+    "plus_cyrillic": ["Russian", "Ukrainian", "Serbian", "Bulgarian"],
+    "plus_greek": ["Greek"],
+    "plus_vietnamese": ["Vietnamese"],
+    "cjk_adjacent": ["Japanese", "Korean", "Chinese"],
 }
+
+# Script-specific terms that only appear when real script support is being asked
+# for, independent of how the language is named.
+SCRIPT_TERMS = {
+    "plus_cyrillic": [r"Cyrillic"],
+    "plus_greek": [r"polytonic", r"tonos"],
+    "cjk_adjacent": [r"Noto", r"kanji", r"Mincho", r"Gothic face"],
+}
+
+# Phrasings that state the text is in the language, rather than merely naming a
+# nationality. {l} is substituted with each candidate language name.
+LANGUAGE_PHRASINGS = [
+    r"in {l}\b", r"into {l}\b", r"{l} and English", r"English and {l}",
+    r"{l} and Latin", r"Latin and {l}", r"{l}-language", r"{l}-speaking",
+    r"{l} (text|titles?|titling|labels?|interface|headlines?|captions?|body|"
+    r"descriptions?|strings?|diacritics|prose|quotations?|translation|"
+    r"abstracts?|terminology)",
+    r"render {l}", r"{l} (must|has to|needs|should|stacks|carries)",
+    r"the {l}\b", r"set in {l}", r"published in {l}", r"written in {l}",
+    r"labelled in {l}",
+]
+
+
+def states_script_requirement(text, script):
+    """True when the brief actually asks for text in that script."""
+    if script == "latin_only":
+        return True
+    for term in SCRIPT_TERMS.get(script, []):
+        if re.search(term, text, re.I):
+            return True
+    for language in SCRIPT_LANGUAGES[script]:
+        for phrasing in LANGUAGE_PHRASINGS:
+            if re.search(phrasing.replace("{l}", language), text, re.I):
+                return True
+    return False
+
 
 SPECIFICITY_ORDER = ["vague", "moderate", "highly_specific"]
 
@@ -100,9 +143,9 @@ def validate(briefs, dimensions):
         seen[key] = b["id"]
 
     for b in briefs:
-        markers = SCRIPT_MARKERS.get(b["script"])
-        if markers and not any(m in b["text"].lower() for m in markers):
-            problems.append(f"{b['id']} is tagged {b['script']} but the text never mentions it")
+        if not states_script_requirement(b["text"], b["script"]):
+            problems.append(f"{b['id']} is tagged {b['script']} but never states that "
+                            f"the text is in that language")
         if not b["text"].strip():
             problems.append(f"{b['id']} has empty text")
 
@@ -250,7 +293,7 @@ def main():
         print(f"  {name:<20} {scenario['status']}")
 
     print("\nEligible families per script need, the denominators step 5 must use:")
-    for key in SCRIPT_MARKERS:
+    for key in SCRIPT_LANGUAGES:
         print(f"  {key:<16} {document['script_eligibility'][key]}")
     print(f"  {'latin_only':<16} {document['script_eligibility']['latin_only']}")
 

@@ -1,8 +1,8 @@
 {
- "b011": "A quarterly print report for the wealth division of a Vietnamese private bank needs a text face with some refinement to it.",
+ "b011": "A quarterly print report for the wealth division of a Vietnamese private bank, set in Vietnamese and English, needs a text face with some refinement.",
  "b018": "Mobile banking app for a Greek retail bank, interface in Greek and English. The Greek should feel as considered as the Latin rather than an afterthought, and numerals need to line up cleanly down a transaction list.",
  "b035": "We are putting a prepaid card into physical packaging and want the type to feel hard-edged and confrontational.",
- "b051": "A pitch deck for a Vietnamese consumer payments startup that should come across as energetic rather than corporate.",
+ "b051": "A pitch deck for a Vietnamese consumer payments startup, presented in Vietnamese, that should come across as energetic rather than corporate.",
  "b073": "A technical whitepaper on settlement infrastructure, published in English with a Japanese translation. Readers spend the better part of an hour in it, so the Latin has to hold up across long paragraphs and sit comfortably beside the Japanese.",
  "b086": "A private bank's annual investor letter, roughly forty pages of continuous text set at 10.5pt on uncoated stock. We need old-style figures for the prose and lining tabular figures for the tables, a drawn small-caps cut for section openers, and an italic with genuine cursive structure rather than a slanted roman. It has to read as elegant without tipping into ornamental.",
  "b091": "A savings app aimed at first-time investors in Greece, interface in Greek and English. Type must stay legible at 12px on a five-inch screen, carry tabular figures so balances do not shift as they update, and place the Greek tonos correctly. The tone should feel encouraging rather than institutional, and we need at least four weights to build interface hierarchy.",
@@ -12,7 +12,7 @@
  "b120": "A Ukrainian bank's public website, in Ukrainian and English. The Cyrillic must include a correctly drawn ghe with upturn and yi, not a Russian set with substitutions. WCAG AA contrast at 16px body, tabular figures for rate tables, and a licence permitting us to self-host on our own servers. The face should read as institutional and unexcitable.",
  "b129": "A quarterly earnings deck for a listed payments company. It has to project stability when read from the back of a boardroom, and still hold together in dense appendix tables at small sizes.",
  "b131": "A remittance service for Japanese workers sending money home, site in Japanese and English, and it should feel approachable.",
- "b137": "A printed rate card for a Greek brokerage that needs to read as precise.",
+ "b137": "A printed rate card for a Greek brokerage, set in Greek and English, that needs to read as precise.",
  "b144": "A Vietnamese peer-to-peer payments site aimed at students. Vietnamese diacritics stack two deep on some vowels and must not collide at 16px body. We want a display cut for the hero and a text cut for the body from the same family, plus a variable weight axis. The tone is bright and casual without being juvenile.",
  "b149": "A printed derivatives pricing manual for a Greek institution, set in Greek and English. Body runs at 9pt in two columns, so the face needs a large x-height and open apertures at that size. The Greek must include polytonic accents for the historical appendix. Tabular lining figures throughout, and a monospace companion for the formula listings.",
  "b157": "A crypto exchange aimed at Russian-speaking traders. The brand is deliberately harsh and anti-corporate, and the site is bilingual, so the Cyrillic has to carry the same aggression as the Latin rather than softening it.",
@@ -40,5 +40,5 @@
  "b194": "A public health information site for a Russian-speaking population. It has to read as an official source people can trust, and the Cyrillic needs to stay legible for older readers at default browser sizes.",
  "b201": "A book-length guide for caregivers of dementia patients, published in Japanese and English, and it should feel compassionate.",
  "b203": "A blunt anti-smoking campaign site aimed at young men in Vietnam, written in Vietnamese.",
- "b208": "An illustrated health education book for Russian teenagers. It is read for long stretches, so it has to stay comfortable, and the tone should be light rather than lecturing."
+ "b208": "An illustrated health education book for Russian teenagers, written in Russian. It is read for long stretches, so it has to stay comfortable, and the tone should be light rather than lecturing."
 }
