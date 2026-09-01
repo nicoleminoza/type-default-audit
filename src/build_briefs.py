@@ -37,6 +37,35 @@ SCRIPT_MARKERS = {
 
 SPECIFICITY_ORDER = ["vague", "moderate", "highly_specific"]
 
+# The brief set is balanced across script needs at 42 each, which gives every
+# script slice equal precision. It is deliberately not representative of real
+# design work, where Latin-only briefs dominate. Pooling all 210 briefs against
+# the full catalog would therefore report catalog scarcity in Greek and Cyrillic
+# as though it were model concentration.
+#
+# Step 5 corrects this by post-stratifying the pooled figure. The weights below
+# are assumptions about the real-world mix, not measurements. Nobody here has
+# data on the true distribution of design briefs, so step 5 must report the
+# pooled figure under every scenario rather than picking one and calling it the
+# answer. The placeholder values are marked to make that impossible to forget.
+POOLING_SCENARIOS = {
+    "as_sampled": {
+        "status": "MEASURED, this is the actual composition of the brief set",
+        "weights": {"latin_only": 0.20, "plus_cyrillic": 0.20, "plus_greek": 0.20,
+                    "plus_vietnamese": 0.20, "cjk_adjacent": 0.20},
+    },
+    "latin_dominant": {
+        "status": "PLACEHOLDER, UNVALIDATED ASSUMPTION, not measured from anything",
+        "weights": {"latin_only": 0.70, "plus_cyrillic": 0.10, "plus_greek": 0.05,
+                    "plus_vietnamese": 0.10, "cjk_adjacent": 0.05},
+    },
+    "latin_overwhelming": {
+        "status": "PLACEHOLDER, UNVALIDATED ASSUMPTION, not measured from anything",
+        "weights": {"latin_only": 0.90, "plus_cyrillic": 0.04, "plus_greek": 0.02,
+                    "plus_vietnamese": 0.03, "cjk_adjacent": 0.01},
+    },
+}
+
 
 def load_texts(texts_dir):
     texts = {}
@@ -158,6 +187,20 @@ def main():
             "brief_count": len(briefs),
             "grid_seed": grid["seed"],
             "authored_by": "Claude (Opus 5), reviewed by Nicole Minoza",
+            "sampling_design": {
+                "principle": (
+                    "Balanced by construction, not representative. Every script "
+                    "need carries 42 briefs so each slice has equal precision. "
+                    "Real design work is overwhelmingly Latin only, so the pooled "
+                    "figure must be post-stratified before it can be read as a "
+                    "statement about typical practice."),
+                "mean_eligible_families_per_brief": None,
+                "decision": (
+                    "Nicole chose on 2026-08-31 to keep the balanced design and "
+                    "weight the pooled figure, rather than rebalancing the set "
+                    "toward Latin or reporting Latin-only as the headline."),
+            },
+            "pooling_scenarios": POOLING_SCENARIOS,
             "confounds": [
                 "Specificity is entangled with prompt length by construction. Any "
                 "effect attributed to specificity is also an effect of token count.",
@@ -167,6 +210,10 @@ def main():
                 "balancing does not correct.",
                 "Marginals are exact. Pairwise balance is approximate and was "
                 "improved by hill climbing, not guaranteed.",
+                "80 percent of briefs demand a non-Latin script, so the average "
+                "brief can draw on 602 families rather than 1955. Any pooled "
+                "figure computed against the full catalog without reweighting "
+                "will overstate concentration.",
             ],
         },
         "dimensions": grid["dimensions"],
@@ -174,6 +221,9 @@ def main():
         "specificity_lengths": word_counts(briefs),
         "briefs": briefs,
     }
+
+    document["provenance"]["sampling_design"]["mean_eligible_families_per_brief"] = round(
+        sum(document["script_eligibility"][b["script"]] for b in briefs) / len(briefs), 1)
 
     out = out_path
     out.write_text(json.dumps(document, indent=2, ensure_ascii=False))
@@ -191,6 +241,13 @@ def main():
     for level, stats in document["specificity_lengths"].items():
         print(f"  {level:<16} n={stats['count']:<4} mean {stats['mean_words']:<6} "
               f"range {stats['min_words']} to {stats['max_words']}")
+
+    mean_pool = document["provenance"]["sampling_design"]["mean_eligible_families_per_brief"]
+    print(f"\nMean eligible pool per brief: {mean_pool} families, "
+          f"{mean_pool / document['script_eligibility']['_catalog_family_count']:.0%} of the catalog.")
+    print("Pooling scenarios recorded for step 5:")
+    for name, scenario in POOLING_SCENARIOS.items():
+        print(f"  {name:<20} {scenario['status']}")
 
     print("\nEligible families per script need, the denominators step 5 must use:")
     for key in SCRIPT_MARKERS:
