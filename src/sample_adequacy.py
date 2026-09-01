@@ -105,9 +105,16 @@ def main():
     parser.add_argument("--splits", type=int, default=200)
     parser.add_argument("--dimension", default=None,
                         help="limit to one dimension, e.g. script")
+    parser.add_argument("--model", default=None,
+                        help="limit to one model. Use this when models have "
+                             "unequal brief coverage, since mixing them makes "
+                             "the spread reflect coverage rather than sampling.")
     args = parser.parse_args()
 
     rows = load_rows()
+    if args.model:
+        rows = [r for r in rows if r["model_key"] == args.model]
+        print(f"restricted to model: {args.model}")
     rng = random.Random(SEED)
     briefs_in_run = len({r["brief_id"] for r in rows})
     available = len(json.load(open(PROJECT_ROOT / "briefs.json"))["briefs"])

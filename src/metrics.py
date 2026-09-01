@@ -181,6 +181,26 @@ def main():
         subset = [r for r in rows if r["model_key"] == model]
         results.append(compute(subset, full_catalog, f"model: {model}"))
 
+    # A cross-model comparison is only valid on briefs every model completed.
+    # When a run is partial, each model reaches a different subset, and
+    # comparing them measures which briefs each happened to get as much as it
+    # measures the models. The study's methodology requires the brief set be
+    # held identical across conditions, so the comparison is recomputed here on
+    # the intersection, and that intersection is reported alongside it.
+    by_model_briefs = {}
+    for model in sorted({r["model_key"] for r in rows}):
+        by_model_briefs[model] = {r["brief_id"] for r in rows
+                                  if r["model_key"] == model}
+    common = set.intersection(*by_model_briefs.values()) if by_model_briefs else set()
+    comparable = [r for r in rows if r["brief_id"] in common]
+    if comparable and len(common) < max(len(v) for v in by_model_briefs.values()):
+        results.append(compute(comparable, full_catalog,
+                               f"COMMON SUBSET, all models, {len(common)} shared briefs"))
+        for model in sorted(by_model_briefs):
+            subset = [r for r in comparable if r["model_key"] == model]
+            results.append(compute(subset, full_catalog,
+                                   f"common subset | model: {model}"))
+
     for dimension in DIMENSIONS:
         for value in sorted({r[dimension] for r in rows}):
             subset = [r for r in rows if r[dimension] == value]
@@ -215,6 +235,12 @@ def main():
         },
         "pooled": results[0],
         "per_model": [r for r in results if r["group"].startswith("model:")],
+        "brief_coverage_per_model": {
+            m: len({r["brief_id"] for r in rows if r["model_key"] == m})
+            for m in sorted({r["model_key"] for r in rows})},
+        "comparable_subset": [r for r in results
+                              if r["group"].startswith("common subset")
+                              or r["group"].startswith("COMMON SUBSET")],
         "sensitivity_judgment_calls_reversed": sensitivity,
         "pooling_scenarios": briefs_doc["provenance"]["pooling_scenarios"],
         "caveats": briefs_doc["provenance"]["confounds"] + [
@@ -227,6 +253,10 @@ def main():
             "gini_observed_gf is the figure that varies between slices.",
             "Rows marked reliable=NO have too few briefs to interpret. In a "
             "pilot that is most of them.",
+            "When models cover different numbers of briefs, the per_model rows "
+            "are NOT comparable with each other, because each rests on a "
+            "different brief set. Use comparable_subset for any cross-model "
+            "claim. per_model remains valid as a within-model description.",
         ],
     }
     (AUDIT_DIR / "summary.json").write_text(json.dumps(summary, indent=2))
@@ -243,6 +273,12 @@ def main():
                 "hhi_all", "hhi_gf", "gini_observed_gf", "gini_against_catalog",
                 "stability_mean_jaccard", "stability_mean_common_of_5"):
         print(f"  {key:<30} {pooled[key]}")
+    coverage = summary["brief_coverage_per_model"]
+    if len(set(coverage.values())) > 1:
+        print("WARNING: models cover different brief counts "
+              + ", ".join(f"{m}={n}" for m, n in coverage.items()))
+        print("         per-model rows below are NOT comparable with each other.")
+        print("         Use the common-subset rows for any cross-model claim.\n")
     print("\nPER MODEL")
     header = f"  {'model':<12}{'uniq':>6}{'cover':>8}{'out':>8}{'top5':>8}{'hhi':>8}{'stab':>8}"
     print(header)
@@ -251,6 +287,17 @@ def main():
               f"{row['unique_families_gf']:>6}{row['catalog_coverage']:>8.3f}"
               f"{row['out_of_catalog_share']:>8.3f}{row['top5_share_all']:>8.3f}"
               f"{row['hhi_all']:>8.4f}{row['stability_mean_jaccard']:>8.3f}")
+    if summary["comparable_subset"]:
+        print("\nCOMMON SUBSET, the only valid cross-model comparison")
+        print(f"  {'model':<12}{'uniq':>6}{'cover':>8}{'out':>8}{'top5':>8}{'hhi':>8}{'stab':>8}")
+        for row in summary["comparable_subset"]:
+            if not row["group"].startswith("common subset"):
+                continue
+            print(f"  {row['group'].split(': ')[-1]:<12}"
+                  f"{row['unique_families_gf']:>6}{row['catalog_coverage']:>8.3f}"
+                  f"{row['out_of_catalog_share']:>8.3f}{row['top5_share_all']:>8.3f}"
+                  f"{row['hhi_all']:>8.4f}{row['stability_mean_jaccard']:>8.3f}")
+
     print(f"\nwrote {metrics_path}")
     print(f"wrote {AUDIT_DIR / 'summary.json'}   ({len(results)} metric rows)")
 
