@@ -7,6 +7,10 @@ by which rule, and whether that rule involved judgment. Nothing is dropped.
 
 Three buckets, as the study requires:
 
+The review_status and review_note columns are for a human to fill in and are
+preserved across regenerations. A review that lives only in a conversation is
+not an audit trail.
+
   google_fonts      resolved to a family in the catalog
   known_non_google  a real typeface that is not in Google Fonts
   unresolved        could not be resolved, or could not be confirmed to exist
@@ -178,6 +182,26 @@ ALIAS_SIMPLE = {simplify(k): v for k, v in KNOWN_ALIASES.items()}
 NON_GOOGLE_SIMPLE = {simplify(k): v for k, v in KNOWN_NON_GOOGLE.items()}
 
 
+def load_existing_review(path):
+    """Carry a human review forward across regenerations.
+
+    The CSV is regenerated whenever the normalizer runs. Without this, a review
+    recorded in the file would be silently erased by the next run, which is the
+    same failure the briefs builder guards against. Review columns are keyed on
+    the original string, so they survive rule changes and new data.
+    """
+    if not path.exists():
+        return {}
+    kept = {}
+    with open(path, newline="") as handle:
+        for row in csv.DictReader(handle):
+            status = (row.get("review_status") or "").strip()
+            note = (row.get("review_note") or "").strip()
+            if status or note:
+                kept[row["original_string"]] = (status, note)
+    return kept
+
+
 def load_records():
     """Latest record per key, matching the runner's dedupe rule."""
     path = DATA_DIR / "responses.jsonl"
@@ -298,15 +322,18 @@ def main():
 
     AUDIT_DIR.mkdir(parents=True, exist_ok=True)
     csv_path = AUDIT_DIR / "normalization_decisions.csv"
+    prior_review = load_existing_review(csv_path)
+
     with open(csv_path, "w", newline="") as handle:
         writer = csv.writer(handle)
         writer.writerow(["original_string", "occurrences", "bucket",
                          "matched_family", "method", "score", "needs_review",
-                         "split_from"])
+                         "review_status", "review_note", "split_from"])
         for name in sorted(occurrences, key=lambda n: (-occurrences[n], n)):
             bucket, family, method, score, review = decisions[name]
+            status, note = prior_review.get(name, ("", ""))
             writer.writerow([name, occurrences[name], bucket, family, method,
-                             score, "yes" if review else "no",
+                             score, "yes" if review else "no", status, note,
                              "; ".join(sorted(pairing_source.get(name, [])))])
 
     resolved_path = DATA_DIR / "resolved.jsonl"
@@ -351,8 +378,14 @@ def main():
     for method, count in methods.most_common():
         print(f"  {method:<28} {count:>5}")
     review = sum(c for n, c in occurrences.items() if decisions[n][4])
+    flagged = [n for n in occurrences if decisions[n][4]]
     print(f"\nflagged needs_review:    {review} recommendations across "
-          f"{sum(1 for n in occurrences if decisions[n][4])} strings")
+          f"{len(flagged)} strings")
+    signed_off = sum(1 for n in flagged if prior_review.get(n, ("", ""))[0])
+    print(f"of those, human review recorded in the file: {signed_off} of {len(flagged)}")
+    if signed_off < len(flagged):
+        print("  Set review_status to approved, rejected or changed in the CSV. "
+              "Those columns survive regeneration.")
     print(f"\nwrote {csv_path}")
     print(f"wrote {resolved_path}")
 
