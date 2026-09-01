@@ -78,7 +78,7 @@ class AnthropicProvider:
     name = "anthropic"
     key_env = "ANTHROPIC_API_KEY"
 
-    def __init__(self, model_id, temperature=1.0, max_tokens=4096):
+    def __init__(self, model_id, temperature=1.0, max_tokens=8192):
         self.model_id = model_id
         self.temperature = temperature
         self.max_tokens = max_tokens
@@ -116,7 +116,7 @@ class OpenAIProvider:
     name = "openai"
     key_env = "OPENAI_API_KEY"
 
-    def __init__(self, model_id, temperature=1.0, max_tokens=4096):
+    def __init__(self, model_id, temperature=1.0, max_tokens=8192):
         self.model_id = model_id
         self.temperature = temperature
         self.max_tokens = max_tokens
@@ -152,7 +152,7 @@ class GeminiProvider:
     name = "gemini"
     key_env = "GEMINI_API_KEY"
 
-    def __init__(self, model_id, temperature=1.0, max_tokens=4096):
+    def __init__(self, model_id, temperature=1.0, max_tokens=8192):
         self.model_id = model_id
         self.temperature = temperature
         self.max_tokens = max_tokens
@@ -193,7 +193,7 @@ PROVIDER_CLASSES = {
 }
 
 
-def build(provider_name, model_id, temperature=1.0, max_tokens=4096):
+def build(provider_name, model_id, temperature=1.0, max_tokens=8192):
     if provider_name not in PROVIDER_CLASSES:
         raise SystemExit(f"Unknown provider {provider_name}. "
                          f"Known: {sorted(PROVIDER_CLASSES)}")

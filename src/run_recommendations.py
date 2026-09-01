@@ -105,23 +105,33 @@ def record_key(brief_id, model_key, sample_index, fingerprint):
     return f"{PROMPT_VERSION}|{model_key}|{brief_id}|{fingerprint}|{sample_index}"
 
 
-def load_completed_keys(path):
-    """Keys already recorded, so a rerun resumes instead of repeating work."""
+def load_completed_keys(path, only_ok=False):
+    """Keys already recorded, so a rerun resumes instead of repeating work.
+
+    With only_ok, keys whose latest record failed are treated as outstanding so
+    they get retried. Failures would otherwise be recorded once and skipped
+    forever, which is how a systematic failure mode becomes permanent missing
+    data. Where a key appears more than once the last record wins, so analysis
+    must dedupe the same way.
+    """
     if not path.exists():
         return set()
-    keys = set()
+    latest = {}
     with open(path) as handle:
         for line in handle:
             line = line.strip()
             if not line:
                 continue
             try:
-                keys.add(json.loads(line)["key"])
+                record = json.loads(line)
+                latest[record["key"]] = record.get("outcome")
             except (json.JSONDecodeError, KeyError):
                 # A truncated final line is the normal shape of a crash. Skip it
                 # rather than refusing to start, and let the call be redone.
                 continue
-    return keys
+    if only_ok:
+        return {key for key, outcome in latest.items() if outcome == "ok"}
+    return set(latest)
 
 
 def extract_json(text):
@@ -241,6 +251,8 @@ def main():
                         help="samples per brief per model, for the stability measure")
     parser.add_argument("--workers", type=int, default=4)
     parser.add_argument("--list-models", action="store_true")
+    parser.add_argument("--retry-failed", action="store_true",
+                        help="redo calls whose last recorded outcome was not ok")
     parser.add_argument("--dry-run", action="store_true",
                         help="report what would be called without calling anything")
     args = parser.parse_args()
@@ -269,7 +281,7 @@ def main():
         built[key] = provider
 
     DATA_DIR.mkdir(parents=True, exist_ok=True)
-    done = load_completed_keys(RESPONSES_PATH)
+    done = load_completed_keys(RESPONSES_PATH, only_ok=args.retry_failed)
 
     tasks = [
         (brief, key, sample)
