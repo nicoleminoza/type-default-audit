@@ -316,11 +316,43 @@ GENERIC_HISTORICAL = {"Garamond", "Caslon", "Bodoni", "Baskerville", "Didot",
 # Names a human examined and could not confirm as real typefaces. Empty so far.
 UNVERIFIED = set()
 
+# Buckets that mean "not resolved". Named once, because these are tested in the
+# recursion guard and an earlier rename of one of them silently disabled that
+# guard: every failed recursion started returning as though it had succeeded.
+UNRESOLVED_BUCKETS = ("unverified", "uncatalogued")
+
 # Models name a pairing with a symbol or a word. Both forms are two genuine
 # recommendations in one field, so both are split. "and" is only treated as a
 # separator between two capitalised names, so "Gill Sans and friends" is safe.
 SPLIT_PATTERN = re.compile(
     r"\s*[+/&]\s*|\s+(?:with|and|paired with)\s+(?=[A-Z])")
+
+
+def word_prefix(candidate, base):
+    """True when base is a whole-word prefix of candidate.
+
+    Matching on whole words rather than on the flattened string is what keeps
+    Interstate from resolving to Inter. Simplification strips spaces, so
+    "interstate" literally begins with "inter", and a flattened prefix rule
+    would move a Font Bureau face into the Google Fonts bucket and inflate
+    catalog coverage in the direction that flatters the study's own thesis.
+    """
+    candidate_words = candidate.split()
+    base_words = base.split()
+    if len(candidate_words) <= len(base_words):
+        return False
+    return ([w.lower() for w in candidate_words[:len(base_words)]]
+            == [w.lower() for w in base_words])
+
+
+def longest_word_prefix(candidate, names):
+    """The most specific base that is a whole-word prefix of candidate.
+
+    Longest wins, so "Sofia Sans Soft" resolves to Sofia Sans rather than Sofia,
+    and "Noto Sans Mono CJK JP" to Noto Sans Mono rather than Noto Sans.
+    """
+    hits = [n for n in names if word_prefix(candidate, n)]
+    return max(hits, key=lambda n: len(n.split())) if hits else None
 
 
 def simplify(name):
@@ -438,7 +470,7 @@ def resolve(name, families, simple_index, depth=0):
             base = " ".join(parts[:-1])
             bucket, family, method, score, review = resolve(
                 base, families, simple_index, depth + 1)
-            if bucket != "unresolved":
+            if bucket != "uncatalogued":
                 return (bucket, family, f"{kind}_suffix_stripped>{method}",
                         score, review or kind == "script")
         # Foundry prefixes such as "Dinamo ABC Arizona".
@@ -446,19 +478,33 @@ def resolve(name, families, simple_index, depth=0):
             base = " ".join(parts[1:])
             bucket, family, method, score, review = resolve(
                 base, families, simple_index, depth + 1)
-            if bucket != "unresolved":
+            if bucket not in UNRESOLVED_BUCKETS:
                 return (bucket, family, f"foundry_prefix_dropped>{method}",
                         score, True)
 
-    # A known non-Google face carrying extra style words is still that face.
-    for known_simple, vendor in SYSTEM_SIMPLE.items():
-        if simple.startswith(known_simple) and len(simple) > len(known_simple):
-            return "system_font", "", f"system_font_variant:{vendor}", 1.0, False
-
-    for known_simple, foundry in NON_GOOGLE_SIMPLE.items():
-        if simple.startswith(known_simple) and len(simple) > len(known_simple):
+    # A face carrying extra style, optical-size or script words is still that
+    # face. Candidates are gathered from all three tables and the most specific
+    # base wins, so a licensed face whose name happens to begin with a catalog
+    # family name is not miscounted as a catalog hit.
+    candidates = []
+    for base in (longest_word_prefix(name, families),):
+        if base:
+            candidates.append((base, "catalog"))
+    for base in (longest_word_prefix(name, KNOWN_NON_GOOGLE),):
+        if base:
+            candidates.append((base, "licensed"))
+    for base in (longest_word_prefix(name, SYSTEM_FONTS),):
+        if base:
+            candidates.append((base, "system"))
+    if candidates:
+        base, kind = max(candidates, key=lambda c: len(c[0].split()))
+        if kind == "catalog":
+            return "google_fonts", base, "variant_of_catalog_family", 1.0, True
+        if kind == "licensed":
             return ("known_non_google", "",
-                    f"known_non_google_variant:{foundry}", 1.0, False)
+                    f"known_non_google_variant:{KNOWN_NON_GOOGLE[base]}", 1.0, False)
+        return ("system_font", "",
+                f"system_font_variant:{SYSTEM_FONTS[base]}", 1.0, False)
 
     best, best_score = None, 0.0
     for family in families:
