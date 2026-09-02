@@ -120,8 +120,14 @@ def compute(rows, eligible_denominator, label):
     gf_rows = [r for r in rows if r["bucket"] == "google_fonts"]
     gf_counts = Counter(r["family"] for r in gf_rows)
 
-    out_of_catalog = sum(1 for r in rows if r["bucket"] == "known_non_google")
-    unresolved = sum(1 for r in rows if r["bucket"] == "unresolved")
+    # System fonts sit outside the catalog too, so they count toward the
+    # out-of-catalog rate, but they are also reported separately because a face
+    # already on every machine is a different recommendation from a purchase.
+    licensed = sum(1 for r in rows if r["bucket"] == "known_non_google")
+    system = sum(1 for r in rows if r["bucket"] == "system_font")
+    out_of_catalog = licensed + system
+    unresolved = sum(1 for r in rows
+                     if r["bucket"] in ("unverified", "uncatalogued"))
 
     # Gini including every eligible family that was never recommended. This is
     # the measure that answers "how concentrated against what was available".
@@ -139,7 +145,12 @@ def compute(rows, eligible_denominator, label):
         "catalog_coverage": round(len(gf_counts) / eligible_denominator, 4)
                             if eligible_denominator else None,
         "out_of_catalog_share": round(out_of_catalog / total, 4) if total else None,
+        "licensed_share": round(licensed / total, 4) if total else None,
+        "system_font_share": round(system / total, 4) if total else None,
         "unresolved_share": round(unresolved / total, 4) if total else None,
+        "unverified_share": round(
+            sum(1 for r in rows if r["bucket"] == "unverified") / total, 4)
+            if total else None,
         "top5_share_all": top_share(list(all_counts.values()), 5),
         "top10_share_all": top_share(list(all_counts.values()), 10),
         "top25_share_all": top_share(list(all_counts.values()), 25),
