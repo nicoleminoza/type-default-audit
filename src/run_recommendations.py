@@ -37,12 +37,32 @@ from config import DATA_DIR, PROJECT_ROOT
 
 # Changing the prompt changes the instrument. The version is part of every
 # record's key so responses gathered under different wording never pool silently.
-PROMPT_VERSION = "v1"
+#
+# Two conditions exist. "open" is the original: the model is asked for typefaces
+# with no mention of Google Fonts, which is what produced the finding that around
+# 31 percent of recommendations are commercial type. "gfonly" adds a single
+# sentence restricting the model to the catalog and changes nothing else.
+#
+# The pair tests why the models are narrow. If they are limited by a narrow
+# internal index, forcing them into the catalog will remove the licensed names
+# and leave the Latin set roughly as wide as before. If they are reproducing what
+# the design press writes about, being forced into the catalog should widen the
+# Latin set noticeably, because they must reach past the faces that press covers.
+CONDITIONS = {
+    "open": {
+        "version": "v1",
+        "suffix": "",
+    },
+    "gfonly": {
+        "version": "v1-gfonly",
+        "suffix": "\n\nRecommend only typefaces available in Google Fonts.",
+    },
+}
 
 PROMPT_TEMPLATE = """Brief:
 {brief}
 
-Recommend exactly five typefaces for this brief.
+Recommend exactly five typefaces for this brief.{condition}
 
 Respond with only a JSON object in this exact shape and nothing else:
 {{"recommendations": [{{"font": "...", "reason": "..."}}]}}
@@ -101,8 +121,8 @@ def brief_fingerprint(text):
     return hashlib.sha256(text.encode("utf-8")).hexdigest()[:12]
 
 
-def record_key(brief_id, model_key, sample_index, fingerprint):
-    return f"{PROMPT_VERSION}|{model_key}|{brief_id}|{fingerprint}|{sample_index}"
+def record_key(brief_id, model_key, sample_index, fingerprint, version):
+    return f"{version}|{model_key}|{brief_id}|{fingerprint}|{sample_index}"
 
 
 def load_completed_keys(path, only_ok=False):
@@ -187,11 +207,14 @@ def parse_response(text):
     return "ok", parsed
 
 
-def run_one(task, provider, path):
+def run_one(task, provider, path, condition):
     brief, model_key, sample_index = task
+    spec = CONDITIONS[condition]
     fingerprint = brief_fingerprint(brief["text"])
-    key = record_key(brief["id"], model_key, sample_index, fingerprint)
-    prompt = PROMPT_TEMPLATE.format(brief=brief["text"])
+    key = record_key(brief["id"], model_key, sample_index, fingerprint,
+                     spec["version"])
+    prompt = PROMPT_TEMPLATE.format(brief=brief["text"],
+                                    condition=spec["suffix"])
 
     started = time.time()
     record = {
@@ -201,7 +224,8 @@ def run_one(task, provider, path):
         "provider": MODELS[model_key]["provider"],
         "model_id": MODELS[model_key]["model_id"],
         "sample_index": sample_index,
-        "prompt_version": PROMPT_VERSION,
+        "prompt_version": spec["version"],
+        "condition": condition,
         "brief_fingerprint": fingerprint,
         "brief_text": brief["text"],
         "prompt": prompt,
@@ -251,6 +275,9 @@ def main():
                         help="samples per brief per model, for the stability measure")
     parser.add_argument("--workers", type=int, default=4)
     parser.add_argument("--list-models", action="store_true")
+    parser.add_argument("--condition", default="open", choices=sorted(CONDITIONS),
+                        help="open = no mention of Google Fonts (the original "
+                             "run); gfonly = same brief, restricted to the catalog")
     parser.add_argument("--retry-failed", action="store_true",
                         help="redo calls whose last recorded outcome was not ok")
     parser.add_argument("--dry-run", action="store_true",
@@ -283,16 +310,18 @@ def main():
     DATA_DIR.mkdir(parents=True, exist_ok=True)
     done = load_completed_keys(RESPONSES_PATH, only_ok=args.retry_failed)
 
+    version = CONDITIONS[args.condition]["version"]
     tasks = [
         (brief, key, sample)
         for brief in briefs
         for key in model_keys
         for sample in range(1, args.samples + 1)
         if record_key(brief["id"], key, sample,
-                      brief_fingerprint(brief["text"])) not in done
+                      brief_fingerprint(brief["text"]), version) not in done
     ]
     total = len(briefs) * len(model_keys) * args.samples
 
+    print(f"condition: {args.condition}  (prompt version {version})")
     print(f"briefs: {len(briefs)}   models: {len(model_keys)}   samples: {args.samples}")
     print(f"calls needed: {total}   already recorded: {total - len(tasks)}   "
           f"to run now: {len(tasks)}")
@@ -306,7 +335,8 @@ def main():
     counts = Counter()
     started = time.time()
     with ThreadPoolExecutor(max_workers=args.workers) as pool:
-        futures = [pool.submit(run_one, task, built[task[1]], RESPONSES_PATH)
+        futures = [pool.submit(run_one, task, built[task[1]], RESPONSES_PATH,
+                               args.condition)
                    for task in tasks]
         for index, future in enumerate(futures, start=1):
             counts[future.result()] += 1
