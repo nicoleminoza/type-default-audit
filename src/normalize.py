@@ -572,6 +572,10 @@ def main():
                     bucket, family, method, score, review = decisions[part]
                     handle.write(json.dumps({
                         "brief_id": record["brief_id"],
+                        # Carried through so the open and constrained conditions
+                        # are never pooled by accident. Records predating the
+                        # condition flag are the original open run.
+                        "condition": record.get("condition", "open"),
                         "model_key": record["model_key"],
                         "sample_index": record["sample_index"],
                         "brief_tags": record["brief_tags"],
