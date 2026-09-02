@@ -21,6 +21,13 @@ near copies and stability would describe API determinism rather than the model.
 sent_parameters records what was actually transmitted, per provider, because
 some models reject an explicit temperature and the honest record is what went
 over the wire rather than what was intended.
+
+The token ceiling was raised twice, from 4096 to 8192 to 16384, both times
+because Gemini counts reasoning tokens against the same budget as the answer and
+was truncating mid-JSON on the most demanding briefs. Raising it does not change
+any response already collected: measured across the completed run, Anthropic's
+longest response was 357 tokens and OpenAI's 5384, so neither was ever near even
+the first ceiling. Only Gemini approached it, and only on briefs it then failed.
 """
 
 import json
@@ -78,7 +85,7 @@ class AnthropicProvider:
     name = "anthropic"
     key_env = "ANTHROPIC_API_KEY"
 
-    def __init__(self, model_id, temperature=1.0, max_tokens=8192):
+    def __init__(self, model_id, temperature=1.0, max_tokens=16384):
         self.model_id = model_id
         self.temperature = temperature
         self.max_tokens = max_tokens
@@ -116,7 +123,7 @@ class OpenAIProvider:
     name = "openai"
     key_env = "OPENAI_API_KEY"
 
-    def __init__(self, model_id, temperature=1.0, max_tokens=8192):
+    def __init__(self, model_id, temperature=1.0, max_tokens=16384):
         self.model_id = model_id
         self.temperature = temperature
         self.max_tokens = max_tokens
@@ -152,7 +159,7 @@ class GeminiProvider:
     name = "gemini"
     key_env = "GEMINI_API_KEY"
 
-    def __init__(self, model_id, temperature=1.0, max_tokens=8192):
+    def __init__(self, model_id, temperature=1.0, max_tokens=16384):
         self.model_id = model_id
         self.temperature = temperature
         self.max_tokens = max_tokens
@@ -193,7 +200,7 @@ PROVIDER_CLASSES = {
 }
 
 
-def build(provider_name, model_id, temperature=1.0, max_tokens=8192):
+def build(provider_name, model_id, temperature=1.0, max_tokens=16384):
     if provider_name not in PROVIDER_CLASSES:
         raise SystemExit(f"Unknown provider {provider_name}. "
                          f"Known: {sorted(PROVIDER_CLASSES)}")
