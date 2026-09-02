@@ -275,6 +275,15 @@ KNOWN_NON_GOOGLE = {
     "Apax": "Pangram Pangram", "Aeroport": "Type Dynamic",
     "ALS Hauss": "Art Lebedev Studio", "CoFo Peshka": "Contrast Foundry",
     "Benzin": "Fontfabric", "CMU Serif": "Computer Modern, open licence",
+    "Interstate": "Font Bureau",
+    "New Rodin": "Fontworks", "Rodin": "Fontworks",
+    "UD Kakugo": "Fontworks", "TsukuARdGothic": "Fontworks",
+    # Bare "Axis" is AXIS Font, confirmed by Nicole Minoza 2026-09-01.
+    "Axis": "Type Project",
+    # Recorded with her hedge intact. She judged Linotype likely rather than
+    # certain, and an uncertain attribution should read as uncertain in the file
+    # rather than hardening into a fact once it is written down.
+    "Baskerville Cyrillic": "Linotype, attribution uncertain, via MyFonts",
     # Added after reviewing the pilot's unresolved bucket. Each of these I can
     # positively identify; names I still cannot confirm are left out on purpose.
     "Bandera Pro": "ParaType", "Molot": "Letterhead", "Apoc": "Pangram Pangram",
